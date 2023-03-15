@@ -1,0 +1,84 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  margin: 0;
+}
+
+body {
+  background-color: #fff;
+  color: #4B4C4C;
+  &.opened-menu {
+    overflow: hidden;
+  }
+}
+
+
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.btn-reset {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+  &_h-center {
+    align-items: center;
+  }
+  &_w-center {
+    justify-content: center;
+  }
+  &_all-center{
+    align-items: center;
+    justify-content: center;
+  }
+  &_all-sb {
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+
+
+
+
+
+
+
