@@ -1,0 +1,97 @@
+<header class="header">
+  <div class="container header__top">
+    <div class="row align-items-center">
+      <div class="col-lg-2">
+        <a href="" class="header__logo logo">
+          <img src="assets/img/sprite.svg#logo" alt="Logo" class="logo__icon">
+          <p class="logo__caption">Название <span>Компании</span>
+          </p>
+        </a>
+      </div>
+      <div class="col-lg-7">
+        <nav class="header__nav">
+          <ul class="nav__list">
+            <li class="nav__item"><a href="" class="nav__link">О нас</a></li>
+            <li class="nav__item"><a href="" class="nav__link">Доставка и оплата</a></li>
+            <li class="nav__item"><a href="" class="nav__link">Вопросы и ответы</a></li>
+            <li class="nav__item"><a href="" class="nav__link">Новости и статьи </a></li>
+            <li class="nav__item"><a href="" class="nav__link">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-3">
+        <div class="header__contacts">
+          <div class="city header__city">
+            <button
+              class="btn-reset city__btn"
+              type="button"
+              data-toggle="dropdown">
+              Самара
+            </button>
+            <div class="dropdown-menu" aria-labelledby="">
+              <a class="dropdown-item" href="#">Москва</a>
+              <a class="dropdown-item" href="#">Санкт-Петербург</a>
+              <a class="dropdown-item" href="#">Уфа</a>
+              <a class="dropdown-item" href="#">Казань</a>
+            </div>
+          </div>
+          <a href="tel:+78461234567" class="header__phone">8 (846) 123-45-67</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="header__center">
+          <div class="header-catalog">
+            <button class="js-open-header-catalog header-catalog__btn btn-reset">
+            <span class="header-catalog__lines">
+              <i></i><i></i><i></i>
+            </span>
+              Каталог
+            </button>
+          </div>
+          <form class="header-search">
+            <input placeholder="Введите название препарата" autocomplete="off" class="header-search__input"
+                   type="search" name="search" id="search">
+            <button class="header-search__submit btn-reset">Найти</button>
+          </form>
+          <a href="" class="header-favorite">
+            <span>Избранное</span>
+          </a>
+          <a href="" class="header-cart">
+            <div class="header-cart__icon">
+              <svg class="" width="22" height="19">
+                <use xlink:href="assets/img/sprite.svg#icon-cart"></use>
+              </svg>
+              <div class="header-cart__count">1</div>
+            </div>
+            <p class="header-cart__caption">Корзина</p>
+          </a>
+          <a href="" class="header-login">
+            <svg class="header-login__icon" width="18" height="19">
+              <use xlink:href="assets/img/sprite.svg#icon-user"></use>
+            </svg>
+            <p class="header-login__caption">Личный кабинет</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 header__bottom header-tags">
+        <ul class="header-tags__list">
+          <li class="header-tags__item"><a href="" class="header-tags__link">Для женщин</a></li>
+          <li class="header-tags__item"><a href="" class="header-tags__link">Для мужчин</a></li>
+          <li class="header-tags__item"><a href="" class="header-tags__link">БАДы в сезон простуд</a></li>
+          <li class="header-tags__item"><a href="" class="header-tags__link">Для беременных и кормящих</a></li>
+          <li class="header-tags__item"><a href="" class="header-tags__link">Для нервной системы</a></li>
+          <li class="header-tags__item"><a href="" class="header-tags__link">Для пищеварения и обмена веществ</a></li>
+        </ul>
+        <button class="header-tags__btn btn-reset js-open-catalog">+Еще</button>
+      </div>
+    </div>
+  </div>
+</header>
