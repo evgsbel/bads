@@ -1,5 +1,11 @@
 "use strict";
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 //masked inputs
 
 Inputmask({
@@ -49,7 +55,7 @@ $(function () {
   });
 });
 
-// hero slider
+//  sliders
 $(function () {
   var swiperHero = new Swiper(".js-hero-slider", {
     navigation: {
@@ -75,5 +81,41 @@ $(function () {
     //     spaceBetween: 30,
     //   },
     // },
+  });
+});
+
+_toConsumableArray(document.querySelectorAll('.tabs__content')).map(function (tab) {
+  var swiper = tab.querySelector('.swiper');
+  var useful_swiper = tab.querySelector('.js-useful-slider');
+  if (swiper && useful_swiper) {
+    var myMiniSwiper = new Swiper(useful_swiper, {
+      slidesPerView: 3,
+      loop: true,
+      spaceBetween: 40,
+      direction: 'horizontal',
+      navigation: {
+        nextEl: ".useful-button-next",
+        prevEl: ".useful-button-prev"
+      }
+    });
+  }
+});
+
+// // tabs
+
+document.addEventListener('DOMContentLoaded', function () {
+  var tabsBtn = document.querySelectorAll('.tabs__btn');
+  tabsBtn.forEach(function (el) {
+    el.addEventListener('click', function (event) {
+      tabsBtn.forEach(function (tabsBtn) {
+        tabsBtn.classList.remove('is-active');
+      });
+      var path = event.currentTarget.dataset.path;
+      document.querySelectorAll('.tabs__content').forEach(function (tabContent) {
+        tabContent.classList.remove('is-active');
+      });
+      document.querySelector("[data-target=\"".concat(path, "\"]")).classList.add('is-active');
+      el.classList.add('is-active');
+    });
   });
 });

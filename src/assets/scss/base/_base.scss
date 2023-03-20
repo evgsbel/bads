@@ -224,11 +224,12 @@ img {
 .link-arrow {
   display: flex;
   align-items: center;
+  &_blue {
+    color: #5C93F5;
+  }
   svg {
     display: block;
-    margin-left: 3px;
-    width: 11px;
-    height: 8px;
+    margin-left: 5px;
     transition: transform .3s ease-in-out;
   }
   &:hover svg {
@@ -236,3 +237,11 @@ img {
   }
 }
 
+.tabs {
+  &__content {
+    display: none;
+    &.is-active {
+      display: flex;
+    }
+  }
+}

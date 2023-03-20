@@ -19,21 +19,21 @@ $(document).ready(function () {
 //inout number
 $(() => {
 // Убавляем кол-во по клику
-  $('.input-count .input-count_minus').click(function() {
+  $('.input-count .input-count_minus').click(function () {
     let $input = $(this).parent().find('.js-input-number');
     let count = parseInt($input.val()) - 1;
     count = count < 1 ? 1 : count;
     $input.val(count);
   });
 // Прибавляем кол-во по клику
-  $('.input-count .input-count_plus').click(function() {
+  $('.input-count .input-count_plus').click(function () {
     let $input = $(this).parent().find('.js-input-number');
     let count = parseInt($input.val()) + 1;
     count = count > parseInt($input.data('max-count')) ? parseInt($input.data('max-count')) : count;
     $input.val(parseInt(count));
   });
 // Убираем все лишнее и невозможное при изменении поля
-  $('.input-count .js-input-number').bind("change keyup input click", function() {
+  $('.input-count .js-input-number').bind("change keyup input click", function () {
     if (this.value.match(/[^0-9]/g)) {
       this.value = this.value.replace(/[^0-9]/g, '');
     }
@@ -46,7 +46,7 @@ $(() => {
   });
 });
 
-// hero slider
+//  sliders
 $(() => {
   let swiperHero = new Swiper(".js-hero-slider", {
     navigation: {
@@ -74,3 +74,44 @@ $(() => {
     // },
   });
 });
+
+[...document.querySelectorAll('.tabs__content')].map(tab => {
+  const swiper = tab.querySelector('.swiper');
+  const useful_swiper = tab.querySelector('.js-useful-slider');
+  if (swiper && useful_swiper) {
+    const myMiniSwiper = new Swiper(useful_swiper, {
+      slidesPerView: 3,
+      loop: true,
+      spaceBetween: 40,
+      direction: 'horizontal',
+      navigation: {
+        nextEl: ".useful-button-next",
+        prevEl: ".useful-button-prev",
+      }
+    });
+  }
+});
+
+// // tabs
+
+document.addEventListener('DOMContentLoaded', function () {
+  const tabsBtn = document.querySelectorAll('.tabs__btn');
+  tabsBtn.forEach(function (el) {
+    el.addEventListener('click', function (event) {
+      tabsBtn.forEach(tabsBtn => {
+        tabsBtn.classList.remove('is-active');
+      });
+
+      const path = event.currentTarget.dataset.path;
+
+      document.querySelectorAll('.tabs__content').forEach(function (tabContent) {
+        tabContent.classList.remove('is-active');
+      });
+      document.querySelector(`[data-target="${path}"]`).classList.add('is-active');
+      el.classList.add('is-active');
+
+    });
+  });
+});
+
+
