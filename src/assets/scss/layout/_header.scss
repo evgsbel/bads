@@ -327,3 +327,31 @@
 
   }
 }
+
+.catalog-menu {
+  opacity: 0;
+  height: 0;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  width: 800px;
+  background: #fff;
+  border: 1px solid #F5F5F5;
+  border-radius: 10px;
+  filter: drop-shadow(0px 2px 4px rgba(204, 204, 204, 0.25));
+  transition: height .3s ease-in-out, opacity .3s ease-in-out ;
+  &.is-open {
+    height: 422px;
+    opacity: 1;
+  }
+  &__left {
+    width: 30%;
+  }
+  &__right {
+    background-color: #F9F9F9;
+    width: 70%;
+  }
+}

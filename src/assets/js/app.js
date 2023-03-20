@@ -1,20 +1,13 @@
 //masked inputs
-
+$(() => {
 Inputmask({"mask": "+7 (999) 999 - 99 - 99"}).mask('.phone-mask');
+});
 
+//fancybox
 $('[data-fancybox=""]').fancybox({
   // Options will go here
 });
 
-//open catalog
-$(document).ready(function () {
-  $('.js-open-header-catalog').click(function () {
-    $(this).toggleClass('is-active');
-  });
-  $('.js-add-to-favorite').click(function () {
-    $(this).toggleClass('is-active');
-  })
-});
 
 //inout number
 $(() => {
@@ -114,4 +107,21 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
+// catalog menu
+$(() => {
+  const btnMenu = document.querySelector('.js-open-header-catalog');
+  const lnkMenu = document.querySelector('.js-open-catalog');
+  const menu = document.querySelector('.js-catalog-menu');
+  const toggleMenu = function () {
+    menu.classList.toggle('is-open');
+    btnMenu.classList.toggle('is-active');
+  };
+  btnMenu.addEventListener('click', function (e) {
+    e.stopPropagation();
+    toggleMenu();
+  });
+  lnkMenu.addEventListener('click', function (e) {
+    e.stopPropagation();
+    toggleMenu();
+  });
+});
