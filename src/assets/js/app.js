@@ -1,6 +1,6 @@
 //masked inputs
 $(() => {
-Inputmask({"mask": "+7 (999) 999 - 99 - 99"}).mask('.phone-mask');
+  Inputmask({"mask": "+7 (999) 999 - 99 - 99"}).mask('.phone-mask');
 });
 
 //fancybox
@@ -119,9 +119,83 @@ $(() => {
   btnMenu.addEventListener('click', function (e) {
     e.stopPropagation();
     toggleMenu();
+
   });
   lnkMenu.addEventListener('click', function (e) {
     e.stopPropagation();
     toggleMenu();
   });
 });
+
+$(document).ready(function () {
+  new SimpleBar(document.getElementById('citiesList'), {
+    autoHide: false
+  })
+})
+
+
+// search city
+$(() => {
+  $(".js-open-cities").click(function (event) {
+    toggleMenu();
+    event.stopPropagation();
+  });
+
+  $('.cities__item').click(function () {
+    $('.js-open-cities').html($(this).text());
+    toggleMenu();
+  });
+
+  function toggleMenu() {
+    let menu = $(".cities");
+    if (!menu.hasClass('active')) {
+      window.addEventListener('click', closeMenu);
+    } else {
+      window.removeEventListener('click', closeMenu);
+    }
+    menu.toggleClass("active");
+  }
+
+  function closeMenu() {
+    $(".cities").removeClass("active")
+  }
+
+  $('.cities').click(function (event) {
+    event.stopPropagation();
+  });
+
+
+  $('.cities__input').on('input', function () {
+    let search = $(this).val();
+    searchData(search);
+  });
+
+  function searchData(search) {
+    let towns = $('.cities__item');
+    towns.each(function () {
+      if ($(this).text().indexOf(search) === -1) {
+        $(this).addClass('item_hide');
+      } else {
+        $(this).removeClass('item_hide');
+      }
+    });
+  }
+});
+
+// (async () => {
+//   try {
+//     let response = await fetch("assets/js/city.json")
+//     let array = await response.json()
+//
+//     let parent = document.querySelector('.cities__list')
+//     array.forEach(item => {
+//       let elem = document.createElement("li");
+//       elem.classList.add('cities__item')
+//       elem.innerHTML = `${item.city}`;
+//       parent.appendChild(elem);
+//     })
+//   } catch (err) {
+//     alert("Error: " + err)
+//   }
+// })()
+

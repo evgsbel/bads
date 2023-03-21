@@ -121,6 +121,7 @@ function jsVendor() {
     'node_modules/swiper/swiper-bundle.js',
     'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js',
     'node_modules/inputmask/dist/inputmask.min.js',
+    'node_modules/simplebar/dist/simplebar.min.js'
   ])
     .pipe(dest('dist/assets/vendor/js'))
     .pipe(browserSync.stream());
@@ -133,6 +134,7 @@ function cssVendor() {
     'node_modules/animate.css/animate.css',
     'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css',
     'node_modules/swiper/swiper.min.css',
+    'node_modules/simplebar/dist/simplebar.css'
   ])
     .pipe(dest('dist/assets/vendor/css'))
     .pipe(browserSync.stream());
@@ -303,6 +305,7 @@ function concatScripts() {
     'dist/assets/vendor/js/swiper-bundle.js',
     'dist/assets/vendor/js/jquery.fancybox.min.js',
     'dist/assets/vendor/js/inputmask.min.js',
+    'dist/assets/vendor/js/simplebar.min.js',
     'src/assets/js/util/*',
     'src/assets/js/*'
   ])

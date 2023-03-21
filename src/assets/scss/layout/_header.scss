@@ -335,8 +335,7 @@
   top: 80px;
   left: 0;
   z-index: 50;
-  display: flex;
-  align-items: flex-start;
+  padding: 30px;
   width: 800px;
   background: #fff;
   border: 1px solid #F5F5F5;
@@ -344,7 +343,7 @@
   filter: drop-shadow(0px 2px 4px rgba(204, 204, 204, 0.25));
   transition: height .3s ease-in-out, opacity .3s ease-in-out ;
   &.is-open {
-    height: 422px;
+    height: 550px;
     opacity: 1;
   }
   &__left {
@@ -353,5 +352,69 @@
   &__right {
     background-color: #F9F9F9;
     width: 70%;
+  }
+  &__caption {
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.3;
+    color: #0A1532;
+  }
+  &__nav-item {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:hover {
+
+    }
+  }
+  &__nav-link {
+    line-height: 1.3;
+    color: #0A1532;
+    transition: color .3s ease-in-out;
+    svg {
+      width: 5px;
+      height: 7px;
+      fill: #0A1532;
+      transition: fill .3s ease-in-out, transform .3s ease-in-out;;
+    }
+    &:hover,
+    &.is-active {
+      color: #5588E0;
+      svg {
+        fill: #5588E0;
+        transform: translateX(5px);
+      }
+      + .sub-menu {
+        visibility: visible;
+        opacity: 1;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+.sub-menu {
+  position: absolute;
+  background-color: #f9f9f9;
+  top: 0;
+  right: 0;
+  padding: 30px 40px 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  height: 100%;
+  width: calc(100% - 250px);
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  overflow: hidden;
+  transition: visibility .3s ease-in-out, opacity .4s ease-in-out;
+  &__link {
+    line-height: 1;
+    color: #0A1532;
   }
 }
