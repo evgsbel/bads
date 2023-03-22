@@ -6,16 +6,17 @@ title: Home Page
 <section class="hero">
   <div class="container">
     <div class="row">
-      <div class="col-lg-5">
+      <div class="col-md-5 mb-4 mb-md-0">
         <div class="hero__banner hero-banner">
-          <h1 class="hero-banner__title">Американские витамины
+          <h1 class="hero-banner__title d-none d-md-block">Американские витамины
             и&nbsp;БАДы</h1>
-          <p class="hero-banner__subtitle">Быстрое оформление
+          <p class="hero-banner__subtitle d-none d-md-block">Быстрое оформление
             и доставка на сайте</p>
-          <a class="btn btn-reset hero-banner__btn">В каталог</a>
+          <h1 class="hero-banner__title d-md-none">БАДы из Америки с быстрой доставкой и оформлением на сайте со скидкой</h1>
+          <a href="" class="btn btn-reset hero-banner__btn">В каталог</a>
         </div>
       </div>
-      <div class="col-lg-7">
+      <div class="col-md-7">
         <div class="hero-slider js-hero-slider swiper h-100">
           <div class="swiper-wrapper">
             <!--item-->
@@ -122,8 +123,9 @@ title: Home Page
     </div>
     <div class="row">
       <div class="col-12">
-        <div class="product-list__items">
-          <div class="product-list__item">
+        <div class="swiper js-product-list-swiper">
+        <div class="product-list__items swiper-wrapper">
+          <div class="product-list__item swiper-slide">
             <img src="assets/img/pr-01.jpg" alt="" class="product-list__img">
             <div class="product-list__info">
               <p class="product-list__caption">а-Токоферола ацетат капс 100 мг x30
@@ -156,7 +158,7 @@ title: Home Page
               </svg>
             </button>
           </div>
-          <div class="product-list__item">
+          <div class="product-list__item swiper-slide">
             <img src="assets/img/pr-02.jpg" alt="" class="product-list__img">
             <div class="product-list__info">
               <p class="product-list__caption">Аевит капс 200 мг x20</p>
@@ -188,7 +190,7 @@ title: Home Page
               </svg>
             </button>
           </div>
-          <div class="product-list__item">
+          <div class="product-list__item swiper-slide">
             <img src="assets/img/pr-03.jpg" alt="" class="product-list__img">
             <div class="product-list__info">
               <p class="product-list__caption">Аквадетрим(вит Д3) капли вн прим 15000 МЕ/мл 10 мл x1</p>
@@ -220,7 +222,7 @@ title: Home Page
               </svg>
             </button>
           </div>
-          <div class="product-list__item">
+          <div class="product-list__item swiper-slide">
             <img src="assets/img/pr-04.jpg" alt="" class="product-list__img">
             <div class="product-list__info">
               <p class="product-list__caption">Антиоксидантная Защита Грассберг капс x60
@@ -253,7 +255,7 @@ title: Home Page
               </svg>
             </button>
           </div>
-          <div class="product-list__item">
+          <div class="product-list__item swiper-slide">
             <img src="assets/img/pr-05.jpg" alt="" class="product-list__img">
             <div class="product-list__info">
               <p class="product-list__caption">Аскорбиновая к-та малина табл жев x10</p>
@@ -301,7 +303,7 @@ title: Home Page
       </div>
     </div>
     <div class="row main-categories__row">
-      <div class="col-lg-4">
+      <div class="col-md-4">
         <div class="main-categories__item" style="background-image: url('assets/img/ct-01.jpg')">
           <h3 class="main-categories__caption">Фиточаи</h3>
           <a href="" class="main-categories__link link-arrow">
@@ -313,7 +315,7 @@ title: Home Page
           </a>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-md-4">
         <div class="main-categories__item" style="background-image: url('assets/img/ct-02.jpg')">
           <h3 class="main-categories__caption">Для печени</h3>
           <a href="" class="main-categories__link link-arrow">
@@ -324,7 +326,7 @@ title: Home Page
           </a>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-md-4">
         <div class="main-categories__item" style="background-image: url('assets/img/ct-03.jpg')">
           <h3 class="main-categories__caption">Прочие БАДы</h3>
           <a href="" class="main-categories__link link-arrow">
@@ -335,7 +337,7 @@ title: Home Page
           </a>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-md-4">
         <div class="main-categories__item" style="background-image: url('assets/img/ct-04.jpg')">
           <h3 class="main-categories__caption">Кальций</h3>
           <a href="" class="main-categories__link link-arrow">
@@ -346,7 +348,7 @@ title: Home Page
           </a>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-md-4">
         <div class="main-categories__item" style="background-image: url('assets/img/ct-05.jpg')">
           <h3 class="main-categories__caption">Дефицит йода</h3>
           <a href="" class="main-categories__link link-arrow">
@@ -357,7 +359,7 @@ title: Home Page
           </a>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-md-4">
         <div class="main-categories__last">
           <div class="main-categories__item main-categories__item_last"
                style="background-image: url('assets/img/ct-06.jpg')">
@@ -378,14 +380,14 @@ title: Home Page
 <section class="how-order">
   <div class="container">
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-md-4">
         <div class="block-heading">
-          <h2 class="block-heading__title">Популярные категории</h2>
+          <h2 class="block-heading__title">Как оформить заказ</h2>
         </div>
         <p class="how-order__subtitle">Мы собрали самые актуальные вопросы от наших клиентов </p>
-        <a href="" class="btn btn-reset how-order">Все ответы на вопросы</a>
+        <a href="" class="btn btn-reset how-order__btn">Все ответы на вопросы</a>
       </div>
-      <div class="col-lg-8">
+      <div class="col-md-8">
         <div id="accordion" class="accordion how-order__accordion">
           <!-- Item-->
           <div class="accordion__item">
@@ -663,51 +665,4 @@ title: Home Page
   </div>
 </section>
 
-<!--<div class="container mb-5">-->
-<!--  <div class="cities" >-->
-<!--    <p class="cities__caption">Выберите город</p>-->
-<!--    <div class="cities__hide" id="citiesList" >-->
-<!--      <input type="text" class="cities__input" autocomplete="off" value="" placeholder="Поиск по адресу">-->
-<!--      <ul class="cities__list">-->
-<!--        <li class="cities__item">Авангард</li>-->
-<!--        <li class="cities__item">Авдеевка</li>-->
-<!--        <li class="cities__item">Авиаторское</li>-->
-<!--        <li class="cities__item">Агрономичное</li>-->
-<!--        <li class="cities__item">Аджамка</li>-->
-<!--        <li class="cities__item">Ананьев</li>-->
-<!--        <li class="cities__item">Андреевка (Балаклейский р-н)</li>-->
-<!--        <li class="cities__item">Андреевка (Бердянский р-н)</li>-->
-<!--        <li class="cities__item">Андрушевка</li>-->
-<!--        <li class="cities__item">Антоновка (Скадовский р-н)</li>-->
-<!--        <li class="cities__item">Антонины</li>-->
-<!--        <li class="cities__item">Апостолово</li>-->
-<!--        <li class="cities__item">Арбузинка</li>-->
-<!--        <li class="cities__item">Арциз</li>-->
-<!--        <li class="cities__item">Аскания-Нова</li>-->
-<!--        <li class="cities__item">Аулы</li>-->
-<!--        <li class="cities__item">Бабаи</li>-->
-<!--        <li class="cities__item">Бабанка</li>-->
-<!--        <li class="cities__item">Балабино</li>-->
-<!--        <li class="cities__item">Балаклея (Черкасская обл.)</li>-->
-<!--        <li class="cities__item">Балаклея (Харьковская обл.)</li>-->
-<!--        <li class="cities__item">Балки (Запорожская обл.)</li>-->
-<!--        <li class="cities__item">Балта</li>-->
-<!--        <li class="cities__item">Банилов</li>-->
-<!--        <li class="cities__item">Бар</li>-->
-<!--        <li class="cities__item">Баранинцы (Закарпатская обл.)</li>-->
-<!--        <li class="cities__item">Барановка</li>-->
-<!--        <li class="cities__item">Барвенково</li>-->
-<!--        <li class="cities__item">Барышевка</li>-->
-<!--        <li class="cities__item">Бахмач</li>-->
-<!--        <li class="cities__item">Бахмут</li>-->
-<!--        <li class="cities__item">Баштанка</li>-->
-<!--        <li class="cities__item">Безлюдовка</li>-->
-<!--        <li class="cities__item">Бердичев</li>-->
-<!--        <li class="cities__item">Бердянск</li>-->
-<!--        <li class="cities__item">Берегово</li>-->
-<!--        <li class="cities__item">Берегомет</li>-->
-<!--      </ul>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
 

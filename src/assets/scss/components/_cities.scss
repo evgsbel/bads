@@ -2,8 +2,8 @@
   position: absolute;
   top: 50px;
   right: 0;
-  z-index: 30;
-  padding: 25px 0 25px 25px;
+  z-index: 100;
+  padding: 25px 0;
   width: 370px;
   background: #FFFFFF;
   border: 1px solid #E1ECFF;
@@ -13,7 +13,14 @@
   &.active {
     display: block;
   }
-
+  &__heading {
+    padding: 0 25px;
+  }
+  &__wr {
+    padding: 0 25px;
+    max-height: 350px;
+    overflow: auto;
+  }
   &__caption {
     margin-bottom: 15px;
     font-weight: 500;
@@ -37,11 +44,8 @@
     background-repeat: no-repeat;
     background-position: 10px center;
   }
-  &__hide {
+  &__list {
 
-    max-height: 350px;
-    overflow: auto;
-    padding-right: 25px;
   }
   &__item {
     position: relative;

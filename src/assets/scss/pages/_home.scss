@@ -10,13 +10,22 @@
   -webkit-background-size: cover;
   background-size: cover;
   border-radius: 15px;
-
+  height: 100%;
+  @include r(768) {
+    background-image: url('../img/hero-bg-01-768.jpg');
+  }
   &__title {
     margin-bottom: 30px;
     font-weight: 500;
     font-size: 48px;
     line-height: 1.3;
     color: #0a1532;
+    @include r(960) {
+      font-size: 24px;
+    }
+    @include r(576) {
+      font-size: 16px;
+    }
   }
 
   &__subtitle {
@@ -26,6 +35,9 @@
     font-size: 20px;
     line-height: 130%;
     color: #636363;
+    @include r(960) {
+      font-size: 16px;
+    }
   }
 
   &__btn {
@@ -34,6 +46,9 @@
 }
 
 .hero-slider {
+  @include r(768) {
+    padding-bottom: 50px;
+  }
   &__item {
     display: flex;
     flex-direction: column;
@@ -75,6 +90,16 @@
 
   &__pagination {
     bottom: 15px;
+    @include r(768) {
+      bottom: 65px;
+    }
+  }
+  &__navigation {
+    @include r(768) {
+      right: auto;
+      left: 10px;
+      bottom: 0;
+    }
   }
 }
 
@@ -164,6 +189,9 @@
 
   &__row {
     gap: 40px 0;
+    @include r(1024) {
+      gap: 20px 0;
+    }
   }
 
   &__item {
@@ -181,6 +209,14 @@
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
+  }
+
+  &__last {
+    @include r(768) {
+      display: flex;
+      align-items: flex-start;
+      gap: 0 20px;
+    }
   }
 
   &__item_last {
@@ -218,11 +254,15 @@
 
 .how-order {
   margin-bottom: 80px;
-
   &__subtitle {
     margin-bottom: 20px;
     line-height: 1.3;
     color: #636363;
+  }
+  &__btn {
+    @include r(768) {
+      display: none;
+    }
   }
 }
 

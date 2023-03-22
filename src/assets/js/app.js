@@ -49,23 +49,34 @@ $(() => {
     pagination: {
       el: ".swiper-pagination",
     },
-    // breakpoints: {
-    //   320: {
-    //     slidesPerView: 1,
-    //     spaceBetween: 20,
-    //   },
-    //   768: {
-    //     slidesPerView: 2,
-    //   },
-    //   900: {
-    //     slidesPerView: 3,
-    //   },
-    //   1024: {
-    //     slidesPerView: 4,
-    //     spaceBetween: 30,
-    //   },
-    // },
   });
+
+  let swiperProducts = new Swiper(".js-product-list-swiper", {
+    loop: true,
+    breakpoints: {
+      320: {
+        slidesPerView: 1.5,
+        spaceBetween: 30,
+        grabCursor: true
+      },
+      576: {
+        slidesPerView: 2.5,
+        spaceBetween: 30,
+        grabCursor: true
+      },
+      900: {
+        slidesPerView: 3.5,
+        spaceBetween: 30,
+        grabCursor: true
+      },
+      1200: {
+        spaceBetween: 40,
+        slidesPerView: 5,
+        grabCursor: true
+      }
+    }
+  });
+
 });
 
 [...document.querySelectorAll('.tabs__content')].map(tab => {
@@ -73,13 +84,28 @@ $(() => {
   const useful_swiper = tab.querySelector('.js-useful-slider');
   if (swiper && useful_swiper) {
     const myMiniSwiper = new Swiper(useful_swiper, {
-      slidesPerView: 3,
       loop: true,
-      spaceBetween: 40,
       direction: 'horizontal',
       navigation: {
         nextEl: ".useful-button-next",
         prevEl: ".useful-button-prev",
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+        576: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        900: {
+          slidesPerView: 3,
+        },
+        1200: {
+          spaceBetween: 40,
+          slidesPerView: 3,
+        }
       }
     });
   }
@@ -112,6 +138,7 @@ $(() => {
   const btnMenu = document.querySelector('.js-open-header-catalog');
   const lnkMenu = document.querySelector('.js-open-catalog');
   const menu = document.querySelector('.js-catalog-menu');
+  const subItem = document.querySelectorAll('.js-catalog-sub-item')
   const toggleMenu = function () {
     menu.classList.toggle('is-open');
     btnMenu.classList.toggle('is-active');
@@ -119,83 +146,108 @@ $(() => {
   btnMenu.addEventListener('click', function (e) {
     e.stopPropagation();
     toggleMenu();
-
+    subItem[0].classList.add('is-active')
+    subItem[1].classList.remove('is-active')
   });
   lnkMenu.addEventListener('click', function (e) {
     e.stopPropagation();
     toggleMenu();
+    subItem[1].classList.add('is-active')
+    subItem[0].classList.remove('is-active')
   });
+  subItem.forEach(function(el) {
+    el.addEventListener('mouseover', function () {
+      el.classList.remove('is-active');
+    })
+  })
 });
 
-$(document).ready(function () {
-  new SimpleBar(document.getElementById('citiesList'), {
-    autoHide: false
-  })
-})
+// ьщишду menu
+$(() => {
+  const btnMenu = document.querySelector('.js-open-mobile-menu');
+  const menu = document.querySelector('.js-mobile-menu');
+  const toggleMenu = function () {
+    menu.classList.add('is-open');
+    btnMenu.classList.add('is-active');
+  };
+  btnMenu.addEventListener('click', function (e) {
+    e.stopPropagation();
+    toggleMenu();
+  });
+  const closeBtn = document.querySelector('.js-close-mobile-menu');
+  const closeMenu = function () {
+    menu.classList.remove('is-open');
+    btnMenu.classList.remove('is-active');
+  };
+  closeBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    closeMenu();
+  });
+});
 
 
 // search city
-$(() => {
-  $(".js-open-cities").click(function (event) {
-    toggleMenu();
-    event.stopPropagation();
-  });
+(async () => {
+  try {
+    let response = await fetch("assets/js/city.json")
+    let array = await response.json()
 
-  $('.cities__item').click(function () {
-    $('.js-open-cities').html($(this).text());
-    toggleMenu();
-  });
-
-  function toggleMenu() {
-    let menu = $(".cities");
-    if (!menu.hasClass('active')) {
-      window.addEventListener('click', closeMenu);
-    } else {
-      window.removeEventListener('click', closeMenu);
-    }
-    menu.toggleClass("active");
-  }
-
-  function closeMenu() {
-    $(".cities").removeClass("active")
-  }
-
-  $('.cities').click(function (event) {
-    event.stopPropagation();
-  });
-
-
-  $('.cities__input').on('input', function () {
-    let search = $(this).val();
-    searchData(search);
-  });
-
-  function searchData(search) {
-    let towns = $('.cities__item');
-    towns.each(function () {
-      if ($(this).text().indexOf(search) === -1) {
-        $(this).addClass('item_hide');
-      } else {
-        $(this).removeClass('item_hide');
-      }
+    let parent = document.querySelector('.cities__list')
+    array.forEach(item => {
+      let elem = document.createElement("li");
+      elem.classList.add('cities__item')
+      elem.innerHTML = `${item.city}`;
+      parent.appendChild(elem);
+    })
+    new SimpleBar(document.getElementById('citiesList'), {
+      autoHide: false
+    })
+    $(".js-open-cities").click(function (event) {
+      toggleMenu();
+      event.stopPropagation();
     });
-  }
-});
 
-// (async () => {
-//   try {
-//     let response = await fetch("assets/js/city.json")
-//     let array = await response.json()
-//
-//     let parent = document.querySelector('.cities__list')
-//     array.forEach(item => {
-//       let elem = document.createElement("li");
-//       elem.classList.add('cities__item')
-//       elem.innerHTML = `${item.city}`;
-//       parent.appendChild(elem);
-//     })
-//   } catch (err) {
-//     alert("Error: " + err)
-//   }
-// })()
+    $('.cities__item').click(function () {
+      $('.js-open-cities').html($(this).text());
+      toggleMenu();
+    });
+
+    function toggleMenu() {
+      let menu = $(".cities");
+      if (!menu.hasClass('active')) {
+        window.addEventListener('click', closeMenu);
+      } else {
+        window.removeEventListener('click', closeMenu);
+      }
+      menu.toggleClass("active");
+    }
+
+    function closeMenu() {
+      $(".cities").removeClass("active")
+    }
+
+    $('.cities').click(function (event) {
+      event.stopPropagation();
+    });
+
+
+    $('.cities__input').on('input', function () {
+      let search = $(this).val();
+      searchData(search);
+    });
+
+    function searchData(search) {
+      let towns = $('.cities__item');
+      towns.each(function () {
+        if ($(this).text().indexOf(search) === -1) {
+          $(this).addClass('item_hide');
+        } else {
+          $(this).removeClass('item_hide');
+        }
+      });
+    }
+  } catch (err) {
+    alert("Error: " + err)
+  }
+})()
 

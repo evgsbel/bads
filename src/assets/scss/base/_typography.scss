@@ -66,5 +66,8 @@ h2,
   font-size: 32px;
   line-height: 1.3;
   color: #0A1532;
+  @include r(960) {
+    font-size: 28px;
+  }
 }
 
