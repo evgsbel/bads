@@ -167,6 +167,12 @@ $(function () {
       el.classList.remove('is-active');
     });
   });
+  subItem.forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      el.classList.remove('is-active');
+    });
+  });
 });
 
 // ьщишду menu
@@ -222,7 +228,7 @@ _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
           });
         };
         _context.next = 6;
-        return fetch("assets/js/city.json");
+        return fetch("assets/data/city.json");
       case 6:
         response = _context.sent;
         _context.next = 9;
@@ -266,3 +272,13 @@ _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
     }
   }, _callee, null, [[0, 19]]);
 }))();
+
+// change text in small device
+$(function () {
+  var inpSearch = document.querySelector('.header-search__input');
+  window.addEventListener('resize', changePlaceholder);
+  changePlaceholder.call(window);
+  function changePlaceholder() {
+    inpSearch.setAttribute('placeholder', this.innerWidth >= 576 ? 'Введите название препарата' : 'Найти препарат');
+  }
+});

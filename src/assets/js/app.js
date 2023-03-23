@@ -155,8 +155,15 @@ $(() => {
     subItem[1].classList.add('is-active')
     subItem[0].classList.remove('is-active')
   });
-  subItem.forEach(function(el) {
+  subItem.forEach(function (el) {
     el.addEventListener('mouseover', function () {
+      el.classList.remove('is-active');
+    })
+  })
+  subItem.forEach(function (el) {
+
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
       el.classList.remove('is-active');
     })
   })
@@ -189,7 +196,7 @@ $(() => {
 // search city
 (async () => {
   try {
-    let response = await fetch("assets/js/city.json")
+    let response = await fetch("assets/data/city.json")
     let array = await response.json()
 
     let parent = document.querySelector('.cities__list')
@@ -251,3 +258,13 @@ $(() => {
   }
 })()
 
+// change text in small device
+$(() => {
+  let inpSearch = document.querySelector('.header-search__input');
+  window.addEventListener('resize', changePlaceholder);
+  changePlaceholder.call(window);
+
+  function changePlaceholder() {
+    inpSearch.setAttribute('placeholder', this.innerWidth >= 576 ? 'Введите название препарата' : 'Найти препарат');
+  }
+});

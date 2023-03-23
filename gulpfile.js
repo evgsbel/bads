@@ -237,6 +237,16 @@ function copyFont() {
     .pipe(browserSync.stream());
 }
 
+// PLACES FONT FILES IN THE DIST FOLDER
+function copyData() {
+  log(chalk.red.bold('---------------COPYING OTHER DATA INTO DIST FOLDER---------------'));
+  return src([
+    'src/data/*',
+  ])
+    .pipe(dest('dist/assets/data'))
+    .pipe(browserSync.stream());
+}
+
 // PRETTIFY HTML FILES
 function prettyHTML() {
   log(chalk.red.bold('---------------HTML PRETTIFY---------------'));
@@ -358,10 +368,10 @@ function minifyCSS() {
 }
 
 // DEVELOPMENT
-exports.development = series(cleanDist, copyFont, copyImagesMin, svgSprites, compileHTML, compileSCSS, cssVendor, jsVendor, compileJS, resetPages, prettyHTML,  browserSyncInit, watchFiles);
+exports.development = series(cleanDist, copyFont, copyData, copyImagesMin, svgSprites, compileHTML, compileSCSS, cssVendor, jsVendor, compileJS, resetPages, prettyHTML,  browserSyncInit, watchFiles);
 
 // PRODUCTION
-exports.production = series(cleanDist, copyFont, copyImages, svgSprites, compileHTML, compileSCSS, cssVendor, purgeCSS, minifyCSS, jsVendor, concatScripts, minifyScripts, renameSources, prettyHTML, generateDocs, browserSyncInit);
+exports.production = series(cleanDist, copyFont, copyData, copyImages, svgSprites, compileHTML, compileSCSS, cssVendor, purgeCSS, minifyCSS, jsVendor, concatScripts, minifyScripts, renameSources, prettyHTML, generateDocs, browserSyncInit);
 
 // RUN ALL LINTERS
 exports.lint = series(htmlLint, scssLint, jsLint);

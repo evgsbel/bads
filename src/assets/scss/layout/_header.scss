@@ -29,6 +29,9 @@
       justify-content: flex-end;
       gap: 0 20px;
     }
+    @include r(360) {
+      gap: 10px;
+    }
   }
   &__phone {
     padding-left: 22px;
@@ -92,6 +95,9 @@
       transform: translateX(0);
     }
   }
+  @include r(576) {
+    width: 80vw;
+  }
   &__list {
     width: 100%;
     display: flex;
@@ -120,6 +126,7 @@
     position: absolute;
     top: 30px;
     right: 40px;
+    opacity: 0.8;
   }
 }
 
@@ -163,6 +170,9 @@
       width: 100%;
       order: 5;
     }
+    @include r(576) {
+      gap: 0 10px;
+    }
   }
   &__lines {
     position: relative;
@@ -181,6 +191,9 @@
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
     cursor: pointer;
+    @include r(480) {
+      display: none;
+    }
     i {
       display: block;
       position: absolute;
@@ -231,6 +244,9 @@
     line-height: 19px;
     background-color: #5c93f5;
     border-radius: 10px;
+    @include r(576) {
+      height: 35px;
+    }
     &.is-active {
       i {
         &:nth-child(1) {
@@ -283,6 +299,11 @@
     @include r(768) {
       width: 100%;
     }
+    @include r(576) {
+      height: 35px;
+      background-image: none;
+      padding-left: 10px;
+    }
     &::placeholder {
       font-weight: 300;
       font-size: 14px;
@@ -306,6 +327,19 @@
     background: #5588E0;
     border-radius: 10px;
     color: #fff;
+    @include r(576) {
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.40002 0.399902C3.99122 0.399902 0.400024 3.9911 0.400024 8.3999C0.400024 12.8087 3.99122 16.3999 8.40002 16.3999C10.3172 16.3999 12.0779 15.7191 13.4578 14.589L18.2344 19.3655C18.3081 19.4423 18.3964 19.5036 18.4941 19.5458C18.5918 19.5881 18.697 19.6104 18.8034 19.6115C18.9098 19.6125 19.0154 19.5924 19.114 19.5521C19.2125 19.5119 19.302 19.4524 19.3773 19.3772C19.4525 19.3019 19.512 19.2124 19.5523 19.1138C19.5925 19.0153 19.6127 18.9097 19.6116 18.8033C19.6105 18.6968 19.5882 18.5917 19.546 18.494C19.5037 18.3963 19.4424 18.308 19.3657 18.2343L14.5891 13.4577C15.7192 12.0778 16.4 10.3171 16.4 8.3999C16.4 3.9911 12.8088 0.399902 8.40002 0.399902ZM8.40002 1.9999C11.9441 1.9999 14.8 4.8558 14.8 8.3999C14.8 11.944 11.9441 14.7999 8.40002 14.7999C4.85593 14.7999 2.00002 11.944 2.00002 8.3999C2.00002 4.8558 4.85593 1.9999 8.40002 1.9999Z' fill='white'/%3E%3C/svg%3E%0A");
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-left: -35px;
+      height: 35px;
+      padding: 0 18px;
+    }
+    span {
+      @include r(576) {
+        display: none;
+      }
+    }
   }
 }
 
@@ -457,10 +491,14 @@
   border: 1px solid #F5F5F5;
   border-radius: 10px;
   filter: drop-shadow(0px 2px 4px rgba(204, 204, 204, 0.25));
-  transition: opacity .1s ease-in-out, height .3s ease-in-out;
+  transition: all .3s ease-in-out;
   visibility: hidden;
+  height: 100vh;
   @include r(768) {
     top: 60px;
+  }
+  @include r(576) {
+    padding: 15px;
   }
   &.is-open {
     height: 550px;
@@ -468,7 +506,7 @@
     z-index: 50;
     visibility: visible;
     @include r(960) {
-      height: 100vh;
+
     }
   }
   &__left {
@@ -487,12 +525,23 @@
   }
   &__nav-item {
     margin-bottom: 10px;
-
     &:last-child {
       margin-bottom: 0;
     }
-    &:hover {
-
+    &:hover,
+    &.is-active {
+      .sub-menu {
+        visibility: visible;
+        opacity: 1;
+        z-index: 1;
+      }
+      .catalog-menu__nav-link {
+        color: #5588E0;
+        svg {
+          fill: #5588E0;
+          transform: translateX(5px);
+        }
+      }
     }
   }
   &__nav-link {
@@ -504,19 +553,6 @@
       height: 7px;
       fill: #0A1532;
       transition: fill .3s ease-in-out, transform .3s ease-in-out;;
-    }
-    &:hover,
-    &.is-active {
-      color: #5588E0;
-      svg {
-        fill: #5588E0;
-        transform: translateX(5px);
-      }
-      + .sub-menu {
-        visibility: visible;
-        opacity: 1;
-        z-index: 1;
-      }
     }
   }
 }
@@ -537,7 +573,15 @@
   opacity: 0;
   z-index: -1;
   overflow: hidden;
-  transition: visibility .3s ease-in-out, opacity .4s ease-in-out;
+  transition: all .3s ease-in-out;
+
+  @include r(768) {
+    flex-direction: row;
+    width: 100%;
+    top: 150px;
+    height: auto;
+    gap: 12px 35px;
+  }
   &__link {
     line-height: 1;
     color: #0A1532;
