@@ -170,38 +170,7 @@ img {
   }
 }
 
-.input-count {
-  display: flex;
-  align-items: center;
-  gap: 0 10px;
-  &__btn {
-    font-weight: 500;
-    font-size: 11px;
-    line-height: 15px;
-    color: #0A1532;
-  }
-  &__input {
-    font-weight: 500;
-    font-size: 11px;
-    line-height: 15px;
-    color: #0A1532;
-    text-align: center;
-    width: 23px;
-    height: 27px;
-    left: 122px;
-    top: 93px;
-    border: 1px solid #5588e0;
-    border-radius: 8px;
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    &:focus {
-      outline: none;
-    }
-  }
-}
+
 
 .to-favorite {
   display: flex;
@@ -241,7 +210,7 @@ img {
   &__content {
     display: none;
     &.is-active {
-      display: flex;
+      display: block;
     }
   }
 }

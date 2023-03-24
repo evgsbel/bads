@@ -31,15 +31,19 @@
 // 4. Layout-related sections
 @import
   'layout/header',
-  'layout/footer';
+  'layout/footer',
+  'layout/popups';
 
 // 5. Components
 @import
-'components/cities';
+'components/cities',
+'components/breadcrumbs',
+'components/forms';
 
 // 6. Page-specific styles
 @import
-  'pages/home';
+  'pages/home',
+  'pages/catalog';
 
 // 7. Themes
 @import

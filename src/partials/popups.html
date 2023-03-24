@@ -1,0 +1,131 @@
+<div id="login" class="login">
+  <ul class="nav login__nav" id="loginTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link active btn-reset login__btn"
+        id="home-tab"
+        data-toggle="tab"
+        data-target="#home" type="button"
+        role="tab"
+        aria-controls="home"
+        aria-selected="true">
+        Войти
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link btn-reset login__btn"
+        id="profile-tab"
+        data-toggle="tab"
+        data-target="#profile"
+        type="button"
+        role="tab"
+        aria-controls="profile"
+        aria-selected="false">
+        Регистрация
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <form action="" class="login__form form">
+        <label for="login-email" class="form__label">
+          Введите e-mail
+          <input
+            class="form__input"
+            id="login-email"
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            required
+          />
+        </label>
+        <label for="login-password" class="form__label mb-4">
+          Введите пароль
+          <input
+            class="form__input"
+            id="login-password"
+            type="text"
+            name="password"
+            placeholder="Введите пароль"
+            required
+          />
+        </label>
+        <button class="btn btn-reset form__submit login__submit">Войти</button>
+        <a href="" class="login__link">Забыли пароль?</a>
+      </form>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <form action="" class="login__form form">
+        <label for="reg-name" class="form__label">
+          Ваше имя
+          <input
+            class="form__input"
+            id="reg-name"
+            type="text"
+            name="name"
+            placeholder="Имя"
+            required
+          />
+        </label>
+        <label for="reg-email" class="form__label">
+          Введите e-mail
+          <input
+            class="form__input"
+            id="reg-email"
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            required
+          />
+        </label>
+        <label for="reg-phone" class="form__label">
+          Введите номер телефона
+          <input
+            class="form__input phone-mask"
+            id="reg-phone"
+            type="phone"
+            name="phone"
+            placeholder="Номер телефона"
+            required
+          />
+        </label>
+        <label for="reg-password" class="form__label mb-4">
+          Введите пароль
+          <input
+            class="form__input"
+            id="reg-password"
+            type="text"
+            name="password"
+            placeholder="Введите пароль"
+            required
+          />
+        </label>
+        <label for="reg-password-confirm" class="form__label mb-4">
+          Подтвердите пароль
+          <input
+            class="form__input"
+            id="reg-password-confirm"
+            type="text"
+            name="password-confirm"
+            placeholder="Введите пароль"
+            required
+          />
+        </label>
+        <label for="conf" class="checkbox__label">
+          <input type="checkbox" name="conf" id="conf" class="checkbox" checked>
+          <span class="checkbox__pane"></span>
+          Я согласен с <a href="">политикой обработки персональных данных</a>
+        </label>
+        <label for="reg-subscribe" class="checkbox__label mb-4">
+          <input type="checkbox" name="reg-subscribe" id="reg-subscribe" class="checkbox">
+          <span class="checkbox__pane"></span>
+          Я согласен получать оповещение о скидках и акциях
+        </label>
+        <button class="btn btn-reset form__submit login__submit">Зарегистрироваться</button>
+      </form>
+    </div>
+
+  </div>
+
+</div>

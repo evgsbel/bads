@@ -4,28 +4,33 @@ $(() => {
 });
 
 //fancybox
-$('[data-fancybox=""]').fancybox({
-  // Options will go here
-});
+$(()=>{
+  $('[data-fancybox]').fancybox({
+    animationEffect: "zoom-in-out",
+    animationDuration: 600,
+    transitionEffect: "rotate",
+    transitionDuration: 400,
+  });
+})
 
 
 //inout number
 $(() => {
-// Убавляем кол-во по клику
+
   $('.input-count .input-count_minus').click(function () {
     let $input = $(this).parent().find('.js-input-number');
     let count = parseInt($input.val()) - 1;
     count = count < 1 ? 1 : count;
     $input.val(count);
   });
-// Прибавляем кол-во по клику
+
   $('.input-count .input-count_plus').click(function () {
     let $input = $(this).parent().find('.js-input-number');
     let count = parseInt($input.val()) + 1;
     count = count > parseInt($input.data('max-count')) ? parseInt($input.data('max-count')) : count;
     $input.val(parseInt(count));
   });
-// Убираем все лишнее и невозможное при изменении поля
+
   $('.input-count .js-input-number').bind("change keyup input click", function () {
     if (this.value.match(/[^0-9]/g)) {
       this.value = this.value.replace(/[^0-9]/g, '');
@@ -70,7 +75,7 @@ $(() => {
         grabCursor: true
       },
       1200: {
-        spaceBetween: 40,
+        spaceBetween: 35,
         slidesPerView: 5,
         grabCursor: true
       }
@@ -82,41 +87,45 @@ $(() => {
 [...document.querySelectorAll('.tabs__content')].map(tab => {
   const swiper = tab.querySelector('.swiper');
   const useful_swiper = tab.querySelector('.js-useful-slider');
-  if (swiper && useful_swiper) {
-    const myMiniSwiper = new Swiper(useful_swiper, {
-      loop: true,
-      direction: 'horizontal',
-      navigation: {
-        nextEl: ".useful-button-next",
-        prevEl: ".useful-button-prev",
-      },
-      breakpoints: {
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 0,
+  const tabsBtn = document.querySelectorAll('.tabs__btn');
+    if (swiper && useful_swiper) {
+      const usSwiper = new Swiper(useful_swiper, {
+        setWrapperSize: true,
+        direction: 'horizontal',
+        navigation: {
+          nextEl: ".useful-button-next",
+          prevEl: ".useful-button-prev",
         },
-        576: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        900: {
-          slidesPerView: 3,
-        },
-        1200: {
-          spaceBetween: 40,
-          slidesPerView: 3,
+        observer: true,
+        observeParents: true,
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          576: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          900: {
+            slidesPerView: 3,
+          },
+          1200: {
+            spaceBetween: 40,
+            slidesPerView: 3,
+          }
         }
-      }
-    });
-  }
+      });
+    }
 });
 
-// // tabs
+// tabs
 
 document.addEventListener('DOMContentLoaded', function () {
   const tabsBtn = document.querySelectorAll('.tabs__btn');
   tabsBtn.forEach(function (el) {
     el.addEventListener('click', function (event) {
+
       tabsBtn.forEach(tabsBtn => {
         tabsBtn.classList.remove('is-active');
       });
@@ -125,10 +134,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       document.querySelectorAll('.tabs__content').forEach(function (tabContent) {
         tabContent.classList.remove('is-active');
+
       });
       document.querySelector(`[data-target="${path}"]`).classList.add('is-active');
       el.classList.add('is-active');
-
     });
   });
 });
@@ -169,7 +178,7 @@ $(() => {
   })
 });
 
-// ьщишду menu
+// mobile menu
 $(() => {
   const btnMenu = document.querySelector('.js-open-mobile-menu');
   const menu = document.querySelector('.js-mobile-menu');
@@ -267,4 +276,12 @@ $(() => {
   function changePlaceholder() {
     inpSearch.setAttribute('placeholder', this.innerWidth >= 576 ? 'Введите название препарата' : 'Найти препарат');
   }
+});
+
+
+// custom select
+$(document).ready(function() {
+  $('.js-select').select2({
+    minimumResultsForSearch: Infinity,
+  });
 });

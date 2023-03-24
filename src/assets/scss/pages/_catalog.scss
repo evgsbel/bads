@@ -1,0 +1,11 @@
+.catalog {
+  flex-wrap: wrap;
+  gap: 30px 40px;
+}
+
+.filters {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0 40px;
+}

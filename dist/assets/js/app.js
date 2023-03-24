@@ -18,27 +18,29 @@ $(function () {
 });
 
 //fancybox
-$('[data-fancybox=""]').fancybox({
-  // Options will go here
+$(function () {
+  $('[data-fancybox]').fancybox({
+    animationEffect: "zoom-in-out",
+    animationDuration: 600,
+    transitionEffect: "rotate",
+    transitionDuration: 400
+  });
 });
 
 //inout number
 $(function () {
-  // Убавляем кол-во по клику
   $('.input-count .input-count_minus').click(function () {
     var $input = $(this).parent().find('.js-input-number');
     var count = parseInt($input.val()) - 1;
     count = count < 1 ? 1 : count;
     $input.val(count);
   });
-  // Прибавляем кол-во по клику
   $('.input-count .input-count_plus').click(function () {
     var $input = $(this).parent().find('.js-input-number');
     var count = parseInt($input.val()) + 1;
     count = count > parseInt($input.data('max-count')) ? parseInt($input.data('max-count')) : count;
     $input.val(parseInt(count));
   });
-  // Убираем все лишнее и невозможное при изменении поля
   $('.input-count .js-input-number').bind("change keyup input click", function () {
     if (this.value.match(/[^0-9]/g)) {
       this.value = this.value.replace(/[^0-9]/g, '');
@@ -82,7 +84,7 @@ $(function () {
         grabCursor: true
       },
       1200: {
-        spaceBetween: 40,
+        spaceBetween: 35,
         slidesPerView: 5,
         grabCursor: true
       }
@@ -92,14 +94,17 @@ $(function () {
 _toConsumableArray(document.querySelectorAll('.tabs__content')).map(function (tab) {
   var swiper = tab.querySelector('.swiper');
   var useful_swiper = tab.querySelector('.js-useful-slider');
+  var tabsBtn = document.querySelectorAll('.tabs__btn');
   if (swiper && useful_swiper) {
-    var myMiniSwiper = new Swiper(useful_swiper, {
-      loop: true,
+    var usSwiper = new Swiper(useful_swiper, {
+      setWrapperSize: true,
       direction: 'horizontal',
       navigation: {
         nextEl: ".useful-button-next",
         prevEl: ".useful-button-prev"
       },
+      observer: true,
+      observeParents: true,
       breakpoints: {
         320: {
           slidesPerView: 1,
@@ -121,7 +126,7 @@ _toConsumableArray(document.querySelectorAll('.tabs__content')).map(function (ta
   }
 });
 
-// // tabs
+// tabs
 
 document.addEventListener('DOMContentLoaded', function () {
   var tabsBtn = document.querySelectorAll('.tabs__btn');
@@ -175,7 +180,7 @@ $(function () {
   });
 });
 
-// ьщишду menu
+// mobile menu
 $(function () {
   var btnMenu = document.querySelector('.js-open-mobile-menu');
   var menu = document.querySelector('.js-mobile-menu');
@@ -281,4 +286,11 @@ $(function () {
   function changePlaceholder() {
     inpSearch.setAttribute('placeholder', this.innerWidth >= 576 ? 'Введите название препарата' : 'Найти препарат');
   }
+});
+
+// custom select
+$(document).ready(function () {
+  $('.js-select').select2({
+    minimumResultsForSearch: Infinity
+  });
 });
