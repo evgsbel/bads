@@ -13,6 +13,26 @@ $(()=>{
   });
 })
 
+//add to favorite
+
+
+$(() => {
+  $('.js-add-to-favorite').click(function () {
+    $(this).toggleClass('is-active')
+  })
+  $('.js-card-toggle-favorites').on('click', function () {
+    if (!($(this).hasClass('is-active'))) {
+      $(this)
+        .addClass('is-active')
+        .find('span').text('В избранном')
+    } else (
+      $(this)
+        .removeClass('is-active')
+        .find('span').text('В избранное')
+    )
+  });
+});
+
 
 //inout number
 $(() => {
@@ -236,6 +256,7 @@ $(() => {
         window.removeEventListener('click', closeMenu);
       }
       menu.toggleClass("active");
+      $(".js-open-cities").toggleClass('is-active')
     }
 
     function closeMenu() {
@@ -281,7 +302,20 @@ $(() => {
 
 // custom select
 $(document).ready(function() {
-  $('.js-select').select2({
+  $('.js-select-sort').select2({
     minimumResultsForSearch: Infinity,
+    placeholder: 'Сортировать по'
+  });
+  $('.js-select-brand').select2({
+    minimumResultsForSearch: Infinity,
+    placeholder: 'Бренды'
+  });
+  $('.js-select-indication').select2({
+    minimumResultsForSearch: Infinity,
+    placeholder: 'Показания'
+  });
+  $('.js-select-forms').select2({
+    minimumResultsForSearch: Infinity,
+    placeholder: 'Форма выпуска'
   });
 });

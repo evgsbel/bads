@@ -153,6 +153,9 @@
       transform: translateY(-50%) rotate(0);
       transition: transform .3s ease-in-out;
     }
+    &.is-active::before {
+      transform: translateY(-50%) rotate(180deg);
+    }
   }
   &.show {
     .city__btn::before {
