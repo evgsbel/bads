@@ -183,7 +183,6 @@ img {
     stroke-width: 30px;
     transition: fill .3s ease-in-out;
   }
-  &:hover svg,
   &.is-active svg {
     fill: #ad4242;
   }

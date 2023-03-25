@@ -16,22 +16,8 @@ $(()=>{
 //add to favorite
 
 
-$(() => {
-  $('.js-add-to-favorite').click(function () {
-    $(this).toggleClass('is-active')
-  })
-  $('.js-card-toggle-favorites').on('click', function () {
-    if (!($(this).hasClass('is-active'))) {
-      $(this)
-        .addClass('is-active')
-        .find('span').text('В избранном')
-    } else (
-      $(this)
-        .removeClass('is-active')
-        .find('span').text('В избранное')
-    )
-  });
-});
+
+
 
 
 //inout number
@@ -78,6 +64,7 @@ $(() => {
 
   let swiperProducts = new Swiper(".js-product-list-swiper", {
     loop: true,
+    freeMode: true,
     breakpoints: {
       320: {
         slidesPerView: 1.5,
@@ -159,6 +146,25 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelector(`[data-target="${path}"]`).classList.add('is-active');
       el.classList.add('is-active');
     });
+  });
+});
+
+$(() => {
+  $('.js-add-to-favorite').click(function () {
+    $(this).toggleClass('is-active')
+  })
+});
+$(() => {
+  $('.js-card-toggle-favorites').on('click', function () {
+    if (!($(this).hasClass('is-active'))) {
+      $(this)
+        .addClass('is-active')
+        .find('span').text('В избранном')
+    } else (
+      $(this)
+        .removeClass('is-active')
+        .find('span').text('В избранное')
+    )
   });
 });
 

@@ -29,17 +29,6 @@ $(function () {
 
 //add to favorite
 
-$(function () {
-  $('.js-add-to-favorite').click(function () {
-    $(this).toggleClass('is-active');
-  });
-  $('.js-card-toggle-favorites').on('click', function () {
-    if (!$(this).hasClass('is-active')) {
-      $(this).addClass('is-active').find('span').text('В избранном');
-    } else $(this).removeClass('is-active').find('span').text('В избранное');
-  });
-});
-
 //inout number
 $(function () {
   $('.input-count .input-count_minus').click(function () {
@@ -80,6 +69,7 @@ $(function () {
   });
   var swiperProducts = new Swiper(".js-product-list-swiper", {
     loop: true,
+    freeMode: true,
     breakpoints: {
       320: {
         slidesPerView: 1.5,
@@ -155,6 +145,18 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelector("[data-target=\"".concat(path, "\"]")).classList.add('is-active');
       el.classList.add('is-active');
     });
+  });
+});
+$(function () {
+  $('.js-add-to-favorite').click(function () {
+    $(this).toggleClass('is-active');
+  });
+});
+$(function () {
+  $('.js-card-toggle-favorites').on('click', function () {
+    if (!$(this).hasClass('is-active')) {
+      $(this).addClass('is-active').find('span').text('В избранном');
+    } else $(this).removeClass('is-active').find('span').text('В избранное');
   });
 });
 
