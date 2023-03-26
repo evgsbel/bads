@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cart Page</title>
+  <title>Cart Page step 3</title>
   <!-- build:css -->
   <link rel="stylesheet" href="assets/vendor/css/animate.css">
   <link rel="stylesheet" href="assets/vendor/css/swiper.min.css">
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="assets/css/rtl.css">
 </head>
 
-<body class="is-cart-page">
+<body class="is-cart-payment-page">
 <header class="header">
   <div class="container header__top">
     <div class="row align-items-center">
@@ -221,12 +221,13 @@
         </div>
       </div>
     </div>
+  
   <section class="cart-navigation">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <div class="block-heading">
-            <h2 class="block-heading__title">Корзина</h2>
+            <h2 class="block-heading__title">Оплата и подтверждение</h2>
           </div>
         </div>
       </div>
@@ -237,110 +238,55 @@
           </div>
         </div>
         <div class="col-sm-3">
-          <div class="cart-navigation__item">
-            <p class="cart-navigation__caption is-active">Корзина</p>
+          <div class="cart-navigation__item is-ready">
+            <p class="cart-navigation__caption ">Корзина</p>
           </div>
         </div>
         <div class="col-sm-3">
-          <div class="cart-navigation__item">
-            <p class="cart-navigation__caption">Способ получения</p>
+          <div class="cart-navigation__item is-ready">
+            <p class="cart-navigation__caption ">Способ получения</p>
           </div>
         </div>
         <div class="col-sm-3">
-          <div class="cart-navigation__item cart-navigation__item_last">
-            <p class="cart-navigation__caption">Оплата и подтверждение</p>
+          <div class="cart-navigation__item cart-navigation__item_last is-ready">
+            <p class="cart-navigation__caption is-active">Оплата и подтверждение</p>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section class="cart-order">
+  
+  <section class="cart-pay">
     <div class="container">
       <div class="row">
+        <div class="col-12">
+          <p class="cart-obtain__caption">Самовывоз из аптеки</p>
+        </div>
         <div class="col-lg-7 order-2 order-lg-1">
-          <div class="cart-product">
-            <ul class="cart-product__list">
-              <li class="cart-product__item">
-                <div class="cart-product__img">
-                  <img src="assets/img/cd-01.jpg" alt="Продукт">
+          <div class="cart-pay__item">
+            <div class="cart-pay__heading">
+              <p class="cart-pay__caption">Адрес аптеки</p>
+              <a href="" class="btn btn-reset cart-pay__btn">Изменить</a>
+            </div>
+            <p class="cart-pay__date">Прибытие вашего заказа ожидается <span>14 марта - 21 марта</span></p>
+            <div class="locations__item cart-pay__location-item">
+              <p class="locations__address">ул. Московская, д 33</p>
+              <button class="btn-reset locations__readmore js-open-location-info is-active">Свернуть</button>
+              <div class="locations__info" style="display: block">
+                <p class="locations__description">Небольшое описание пункта выдачи</p>
+                <div class="locations__images">
+                  <img src="assets/img/lc-01.jpg" alt="Адрес">
+                  <img src="assets/img/lc-02.jpg" alt="Адрес">
                 </div>
-                <p class="cart-product__caption">Аскорбиновая к-та малина табл жев x10</p>
-                <button class="btn-reset to-favorite order__to-favorite js-add-to-favorite">
-                  <svg width="25px" height="25px">
-                    <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
-                  </svg>
-                </button>
-                <div class="input-count">
-                  <button class="btn-reset product-card__count-btn input-count__btn input-count_minus" id="minus">-
-                  </button>
-                  <div class="input-count__wrapper">
-                    <input type="number" class="product-card__count input-count__input js-input-number" step="1" min="1"
-                           max="" name="number" value="1" title="Кол-во" size="4" pattern="[0-9]*" inputmode="numeric">
-                  </div>
-                  <button class="btn-reset product-card__count-btn input-count__btn input-count_plus" id="plus">+</button>
-                </div>
-                <p class="cart-product__price">1550 руб.</p>
-                <button class="btn-reset cart-product__delete">
-                  <svg>
-                    <use xlink:href="assets/img/sprite.svg#icon-del"></use>
-                  </svg>
-                </button>
-              </li>
-              <li class="cart-product__item">
-                <div class="cart-product__img">
-                  <img src="assets/img/pr-01.jpg" alt="Продукт">
-                </div>
-                <p class="cart-product__caption">Азафен табл 25 мг уп конт яч/пач карт x50
-                </p>
-                <button class="btn-reset to-favorite order__to-favorite js-add-to-favorite">
-                  <svg width="25px" height="25px">
-                    <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
-                  </svg>
-                </button>
-                <div class="input-count">
-                  <button class="btn-reset product-card__count-btn input-count__btn input-count_minus" id="minus">-
-                  </button>
-                  <div class="input-count__wrapper">
-                    <input type="number" class="product-card__count input-count__input js-input-number" step="1" min="1"
-                           max="" name="number" value="1" title="Кол-во" size="4" pattern="[0-9]*" inputmode="numeric">
-                  </div>
-                  <button class="btn-reset product-card__count-btn input-count__btn input-count_plus" id="plus">+</button>
-                </div>
-                <p class="cart-product__price">1550 руб.</p>
-                <button class="btn-reset cart-product__delete">
-                  <svg>
-                    <use xlink:href="assets/img/sprite.svg#icon-del"></use>
-                  </svg>
-                </button>
-              </li>
-              <li class="cart-product__item">
-                <div class="cart-product__img">
-                  <img src="assets/img/pr-012.jpg" alt="Продукт">
-                </div>
-                <p class="cart-product__caption">Азафен табл 25 мг уп конт яч/пач карт x50
-                </p>
-                <button class="btn-reset to-favorite order__to-favorite js-add-to-favorite">
-                  <svg width="25px" height="25px">
-                    <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
-                  </svg>
-                </button>
-                <div class="input-count">
-                  <button class="btn-reset product-card__count-btn input-count__btn input-count_minus" id="minus">-
-                  </button>
-                  <div class="input-count__wrapper">
-                    <input type="number" class="product-card__count input-count__input js-input-number" step="1" min="1"
-                           max="" name="number" value="1" title="Кол-во" size="4" pattern="[0-9]*" inputmode="numeric">
-                  </div>
-                  <button class="btn-reset product-card__count-btn input-count__btn input-count_plus" id="plus">+</button>
-                </div>
-                <p class="cart-product__price">1550 руб.</p>
-                <button class="btn-reset cart-product__delete">
-                  <svg>
-                    <use xlink:href="assets/img/sprite.svg#icon-del"></use>
-                  </svg>
-                </button>
-              </li>
-            </ul>
+              </div>
+              <p class="locations__time">Ежедневно: с 9:00 до 21:00</p>
+            </div>
+            <p class="cart-pay__caption">Способ оплаты</p>
+            <label for="pay-type" class="radio__label">
+              <input type="radio" name="pay-type[]" id="pay-type" class="radio" checked>
+              <span class="radio__pane"></span>
+              Оплата онлайн
+            </label>
           </div>
         </div>
         <div class="col-lg-5 order-1 order-lg-2">
@@ -350,6 +296,11 @@
               <li class="order__item">
                 <p class="order__item-caption">Сумма заказа</p>
                 <p class="order__item-value">105 000 руб.</p>
+                <ul class="order__product-list">
+                  <li class="order__product-list-item">Название препарата</li>
+                  <li class="order__product-list-item">Название препарата</li>
+                  <li class="order__product-list-item">Название препарата</li>
+                </ul>
               </li>
               <li class="order__item">
                 <p class="order__item-caption">Доставка</p>
@@ -360,195 +311,13 @@
                 <p class="order__item-value">106 000 руб.</p>
               </li>
             </ul>
-            <button class="btn btn-rest order__btn">Оформить заказ</button>
+            <button class="btn btn-rest order__btn" data-fancybox data-src="#cart-result">Подтвердить заказ</button>
           </div>
-          <button class="btn__reset btn cart-order__btn">Информация о доставке</button>
         </div>
       </div>
     </div>
   </section>
-  <section class="product-list can-be-interesting">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="block-heading">
-            <h2 class="block-heading__title">Может пригодиться</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="swiper js-product-list-swiper">
-            <div class="product-list__items swiper-wrapper">
-              <div class="product-list__item swiper-slide">
-                <img src="assets/img/pr-010.jpg" alt="" class="product-list__img">
-                <div class="product-list__info">
-                  <p class="product-list__caption">а-Токоферола ацетат капс 100 мг x30
-                  </p>
-                  <div class="product-list__price">
-                    <p class="product-list__now-price">590 руб.</p>
-                    <p class="product-list__old-price">680 руб.</p>
-                  </div>
-                  <div class="product-list__buy">
-                    <button class="btn btn-reset product-list__add-to-cart">В корзину</button>
-                    <div class="input-count">
-                      <button class="btn-reset input-count__btn input-count_minus" id="minus">-</button>
-                      <div class="input-count__wrapper">
-                        <input type="number"
-                               class="input-count__input js-input-number"
-                               step="1" min="1" max=""
-                               name="number"
-                               value="1"
-                               title="Кол-во"
-                               size="4"
-                               pattern="[0-9]*" inputmode="numeric">
-                      </div>
-                      <button class="btn-reset input-count__btn input-count_plus" id="plus">+</button>
-                    </div>
-                  </div>
-                </div>
-                <button class="btn-reset to-favorite product-list__to-favorite js-add-to-favorite">
-                  <svg width="20px" height="22px">
-                    <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
-                  </svg>
-                </button>
-              </div>
-              <div class="product-list__item swiper-slide">
-                <img src="assets/img/pr-02.jpg" alt="" class="product-list__img">
-                <div class="product-list__info">
-                  <p class="product-list__caption">Аевит капс 200 мг x20</p>
-                  <div class="product-list__price">
-                    <p class="product-list__now-price">1979 руб.</p>
-                    <p class="product-list__old-price">2590 руб.</p>
-                  </div>
-                  <div class="product-list__buy">
-                    <button class="btn btn-reset product-list__add-to-cart">В корзину</button>
-                    <div class="input-count">
-                      <button class="btn-reset input-count__btn input-count_minus" id="minus">-</button>
-                      <div class="input-count__wrapper">
-                        <input type="number"
-                               class="input-count__input js-input-number"
-                               step="1" min="1" max=""
-                               name="number"
-                               value="1"
-                               title="Кол-во"
-                               size="4"
-                               pattern="[0-9]*" inputmode="numeric">
-                      </div>
-                      <button class="btn-reset input-count__btn input-count_plus" id="plus">+</button>
-                    </div>
-                  </div>
-                </div>
-                <button class="btn-reset to-favorite product-list__to-favorite js-add-to-favorite">
-                  <svg width="20px" height="22px">
-                    <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
-                  </svg>
-                </button>
-              </div>
-              <div class="product-list__item swiper-slide">
-                <img src="assets/img/pr-03.jpg" alt="" class="product-list__img">
-                <div class="product-list__info">
-                  <p class="product-list__caption">Аквадетрим(вит Д3) капли вн прим 15000 МЕ/мл 10 мл x1</p>
-                  <div class="product-list__price">
-                    <p class="product-list__now-price">140 руб.</p>
-                    <p class="product-list__old-price">289 руб.</p>
-                  </div>
-                  <div class="product-list__buy">
-                    <button class="btn btn-reset product-list__add-to-cart">В корзину</button>
-                    <div class="input-count">
-                      <button class="btn-reset input-count__btn input-count_minus" id="minus">-</button>
-                      <div class="input-count__wrapper">
-                        <input type="number"
-                               class="input-count__input js-input-number"
-                               step="1" min="1" max=""
-                               name="number"
-                               value="1"
-                               title="Кол-во"
-                               size="4"
-                               pattern="[0-9]*" inputmode="numeric">
-                      </div>
-                      <button class="btn-reset input-count__btn input-count_plus" id="plus">+</button>
-                    </div>
-                  </div>
-                </div>
-                <button class="btn-reset to-favorite product-list__to-favorite js-add-to-favorite">
-                  <svg width="20px" height="22px">
-                    <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
-                  </svg>
-                </button>
-              </div>
-              <div class="product-list__item swiper-slide">
-                <img src="assets/img/pr-04.jpg" alt="" class="product-list__img">
-                <div class="product-list__info">
-                  <p class="product-list__caption">Антиоксидантная Защита Грассберг капс x60
-                  </p>
-                  <div class="product-list__price">
-                    <p class="product-list__now-price">5990 руб.</p>
-                    <p class="product-list__old-price">6990 руб.</p>
-                  </div>
-                  <div class="product-list__buy">
-                    <button class="btn btn-reset product-list__add-to-cart">В корзину</button>
-                    <div class="input-count">
-                      <button class="btn-reset input-count__btn input-count_minus" id="minus">-</button>
-                      <div class="input-count__wrapper">
-                        <input type="number"
-                               class="input-count__input js-input-number"
-                               step="1" min="1" max=""
-                               name="number"
-                               value="1"
-                               title="Кол-во"
-                               size="4"
-                               pattern="[0-9]*" inputmode="numeric">
-                      </div>
-                      <button class="btn-reset input-count__btn input-count_plus" id="plus">+</button>
-                    </div>
-                  </div>
-                </div>
-                <button class="btn-reset to-favorite product-list__to-favorite js-add-to-favorite">
-                  <svg width="20px" height="22px">
-                    <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
-                  </svg>
-                </button>
-              </div>
-              <div class="product-list__item swiper-slide">
-                <img src="assets/img/pr-05.jpg" alt="" class="product-list__img">
-                <div class="product-list__info">
-                  <p class="product-list__caption">Аскорбиновая к-та малина табл жев x10</p>
-                  <div class="product-list__price">
-                    <p class="product-list__now-price">1550 руб.</p>
-                    <p class="product-list__old-price">2900 руб.</p>
-                  </div>
-                  <div class="product-list__buy">
-                    <button class="btn btn-reset product-list__add-to-cart">В корзину</button>
-                    <div class="input-count">
-                      <button class="btn-reset input-count__btn input-count_minus" id="minus">-</button>
-                      <div class="input-count__wrapper">
-                        <input type="number"
-                               class="input-count__input js-input-number"
-                               step="1" min="1" max=""
-                               name="number"
-                               value="1"
-                               title="Кол-во"
-                               size="4"
-                               pattern="[0-9]*" inputmode="numeric">
-                      </div>
-                      <button class="btn-reset input-count__btn input-count_plus" id="plus">+</button>
-                    </div>
-                  </div>
-                </div>
-                <button class="btn-reset to-favorite product-list__to-favorite js-add-to-favorite">
-                  <svg width="20px" height="22px">
-                    <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
   
-        </div>
-      </div>
-    </div>
-  </section>
   
 
 </main>

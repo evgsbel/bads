@@ -1,0 +1,217 @@
+---
+layout: default
+title: Cabinet Page
+userName: Имя пользователя
+---
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="block-heading">
+        <h2 class="block-heading__title">Личный кабинет</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="cabinet">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="cabinet-nav">
+          <ul class="cabinet-nav__list">
+            <li class="cabinet-nav__item">
+              <button class="btn-reset cabinet-nav__btn tabs__btn is-active" data-path="profile">Профиль</button>
+            </li>
+            <li class="cabinet-nav__item">
+              <button class="btn-reset cabinet-nav__btn tabs__btn" data-path="order-history">История заказов</button>
+            </li>
+            <li class="cabinet-nav__item">
+              <button class="btn-reset cabinet-nav__btn tabs__btn" data-path="favorite">Избранное</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-8 offset-lg-1">
+        <div class="tabs__content is-active profile" data-target="profile">
+          <div class="profile__wr">
+            <div class="profile__item">
+              <p class="profile__caption">Личные данные пользователя</p>
+              <form action="" class="login__form form">
+                <label for="reg-name" class="form__label">
+                  Ваше имя
+                  <input
+                    class="form__input"
+                    id="reg-name"
+                    type="text"
+                    name="name"
+                    placeholder="Имя"
+                    required
+                    value="Иванов Андрей"
+                  />
+                </label>
+                <label for="reg-phone" class="form__label">
+                  Номер телефона
+                  <input
+                    class="form__input phone-mask"
+                    id="reg-phone"
+                    type="phone"
+                    name="phone"
+                    placeholder="Номер телефона"
+                    required
+                    value="+7 (912) 345-67-89"
+                  />
+                </label>
+                <label for="reg-email" class="form__label">
+                  E-mail
+                  <input
+                    class="form__input"
+                    id="reg-email"
+                    type="email"
+                    name="email"
+                    placeholder="E-mail"
+                    required
+                    value="ivanov@apteka.ru"
+                  />
+                </label>
+                <label for="reg-password" class="form__label mb-4">
+                  Пароль
+                  <input
+                    class="form__input js-show-pass-input"
+                    id="reg-password"
+                    type="password"
+                    name="password"
+                    placeholder="Введите пароль"
+                    required
+                    value="1234567890"
+                  />
+                  <span class="form__show-pass js-show-pass"></span>
+                </label>
+                <button class="btn btn-reset form__submit login__submit">Сохранить изменения</button>
+              </form>
+            </div>
+            <div class="profile__right">
+              <div class="profile__item mb-4">
+                <p class="profile__caption">Выберите город</p>
+                <div class="city header__city">
+                  <button
+                    class="btn-reset city__btn js-open-cities"
+                    type="button">
+                    Самара
+                  </button>
+                  <div class="cities">
+                    <div class="cities__hide">
+                      <div class="cities__heading">
+                        <input type="text" class="cities__input" autocomplete="off" value=""
+                               placeholder="Поиск по адресу">
+                      </div>
+                      <div class="cities__wr" id="citiesList">
+                        <ul class="cities__list"></ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile__item">
+                <p class="profile__caption">Аптека для самовывоза</p>
+                <div class="cart-pay__item profile__location-item">
+                  <div class="locations__item profile__location-item cart-pay__location-item">
+                    <p class="locations__address">ул. Московская, д 33</p>
+                    <button class="btn-reset locations__readmore ">Аптеки Плюс</button>
+                    <p class="locations__time">Ежедневно: с 9:00 до 21:00</p>
+                  </div>
+                  <a href="" class="btn btn-reset profile__location-change cart-pay__btn">Изменить</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tabs__content order-history" data-target="order-history">
+          <div class="cabinet__empty">
+            <p>История заказов пуста</p>
+          </div>
+        </div>
+        <div class="tabs__content favorite" data-target="favorite">
+          <!--          <div class="cabinet__empty">-->
+          <!--            <p>Нет избранных товаров</p>-->
+          <!--          </div>-->
+          <div class="cart-product favorite-product">
+            <ul class="cart-product__list favorite-product__list">
+              <li class="cart-product__item favorite-product__item">
+                <div class="cart-product__img">
+                  <img src="assets/img/cd-01.jpg" alt="Продукт">
+                </div>
+                <p class="cart-product__caption">Аскорбиновая к-та малина табл жев x10</p>
+                <button class="btn-reset to-favorite order__to-favorite js-add-to-favorite is-active">
+                  <svg width="25px" height="25px">
+                    <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                  </svg>
+                </button>
+                <div class="input-count">
+                  <button class="btn-reset product-card__count-btn input-count__btn input-count_minus" id="minus">-
+                  </button>
+                  <div class="input-count__wrapper">
+                    <input type="number" class="product-card__count input-count__input js-input-number" step="1" min="1"
+                           max="" name="number" value="1" title="Кол-во" size="4" pattern="[0-9]*" inputmode="numeric">
+                  </div>
+                  <button class="btn-reset product-card__count-btn input-count__btn input-count_plus" id="plus">+
+                  </button>
+                </div>
+                <p class="cart-product__price">1550 руб.</p>
+                <button class="btn-reset btn favorite-product__add-to-cart">В корзину</button>
+              </li>
+              <li class="cart-product__item favorite-product__item">
+                <div class="cart-product__img">
+                  <img src="assets/img/pr-01.jpg" alt="Продукт">
+                </div>
+                <p class="cart-product__caption">Азафен табл 25 мг уп конт яч/пач карт x50
+                </p>
+                <button class="btn-reset to-favorite order__to-favorite js-add-to-favorite is-active">
+                  <svg width="25px" height="25px">
+                    <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                  </svg>
+                </button>
+                <div class="input-count">
+                  <button class="btn-reset product-card__count-btn input-count__btn input-count_minus" id="minus">-
+                  </button>
+                  <div class="input-count__wrapper">
+                    <input type="number" class="product-card__count input-count__input js-input-number" step="1" min="1"
+                           max="" name="number" value="1" title="Кол-во" size="4" pattern="[0-9]*" inputmode="numeric">
+                  </div>
+                  <button class="btn-reset product-card__count-btn input-count__btn input-count_plus" id="plus">+
+                  </button>
+                </div>
+                <p class="cart-product__price">1550 руб.</p>
+                <button class="btn-reset btn favorite-product__add-to-cart">В корзину</button>
+              </li>
+              <li class="cart-product__item favorite-product__item">
+                <div class="cart-product__img">
+                  <img src="assets/img/pr-012.jpg" alt="Продукт">
+                </div>
+                <p class="cart-product__caption">Азафен табл 25 мг уп конт яч/пач карт x50
+                </p>
+                <button class="btn-reset to-favorite order__to-favorite js-add-to-favorite is-active">
+                  <svg width="25px" height="25px">
+                    <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                  </svg>
+                </button>
+                <div class="input-count">
+                  <button class="btn-reset product-card__count-btn input-count__btn input-count_minus" id="minus">-
+                  </button>
+                  <div class="input-count__wrapper">
+                    <input type="number" class="product-card__count input-count__input js-input-number" step="1" min="1"
+                           max="" name="number" value="1" title="Кол-во" size="4" pattern="[0-9]*" inputmode="numeric">
+                  </div>
+                  <button class="btn-reset product-card__count-btn input-count__btn input-count_plus" id="plus">+
+                  </button>
+                </div>
+                <p class="cart-product__price">1550 руб.</p>
+                <button class="btn-reset btn favorite-product__add-to-cart">В корзину</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

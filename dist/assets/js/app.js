@@ -27,9 +27,7 @@ $(function () {
   });
 });
 
-//add to favorite
-
-//inout number
+//input number
 $(function () {
   $('.input-count .input-count_minus').click(function () {
     var $input = $(this).parent().find('.js-input-number');
@@ -130,7 +128,6 @@ _toConsumableArray(document.querySelectorAll('.tabs__content')).map(function (ta
 });
 
 // tabs
-
 document.addEventListener('DOMContentLoaded', function () {
   var tabsBtn = document.querySelectorAll('.tabs__btn');
   tabsBtn.forEach(function (el) {
@@ -147,6 +144,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+//add to favorite
 $(function () {
   $('.js-add-to-favorite').click(function () {
     $(this).toggleClass('is-active');
@@ -218,7 +217,7 @@ $(function () {
   });
 });
 
-// search city
+// change city in header
 _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
   var toggleMenu, closeMenu, searchData, response, array, parent;
   return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -237,6 +236,7 @@ _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         };
         closeMenu = function closeMenu() {
           $(".cities").removeClass("active");
+          $(".js-open-cities").removeClass('is-active');
         };
         searchData = function searchData(search) {
           var towns = $('.cities__item');
@@ -322,4 +322,72 @@ $(document).ready(function () {
     minimumResultsForSearch: Infinity,
     placeholder: 'Форма выпуска'
   });
+});
+
+//custom scroll in locations cart
+$(function () {
+  if ($('#locationsList').length > 0) {
+    new SimpleBar(document.getElementById('locationsList'), {
+      autoHide: false
+    });
+  }
+});
+
+// dropdown location in cart
+$(function () {
+  $('.js-open-location-info').on('click', function () {
+    $(this).parents('.locations__item').toggleClass('is-active').find('.locations__info').slideToggle();
+    $(this).text($(this).text() == 'Как найти' ? 'Свернуть' : 'Как найти');
+  });
+});
+
+// search loaction in cart
+$(function () {
+  $('.js-location-input').on('input', function () {
+    var search = $(this).val();
+    searchData(search);
+  });
+  function searchData(search) {
+    var towns = $('.locations__item');
+    towns.each(function () {
+      if ($(this).text().indexOf(search) === -1) {
+        $(this).addClass('item_hide');
+      } else {
+        $(this).removeClass('item_hide');
+      }
+    });
+  }
+});
+
+// change location in cart
+$(function () {
+  var changeBtn = $('.js-change-location');
+  changeBtn.on('click', function () {
+    changeBtn.removeClass('is-active').text('Выбрать');
+    if (!$(this).hasClass('is-active')) {
+      $(this).addClass('is-active').text('Выбрано');
+    } else {
+      $(this).removeClass('is-active').text('Выбрать');
+    }
+    if (changeBtn.hasClass('is-active')) {
+      $('.cart-obtain__btn').removeAttr('disabled');
+    } else {
+      $('.cart-obtain__btn').attr('disabled', 'true');
+    }
+  });
+});
+
+// show pass in input
+$(function () {
+  var passField = document.querySelector(".js-show-pass-input");
+  var showBtn = document.querySelector(".js-show-pass");
+  showBtn.onclick = function () {
+    if (passField.type === "password") {
+      passField.type = "text";
+      showBtn.classList.add("is-active");
+    } else {
+      passField.type = "password";
+      showBtn.classList.remove("is-active");
+    }
+  };
 });

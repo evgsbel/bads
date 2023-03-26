@@ -33,18 +33,18 @@
             <button class="burger header__burger btn-reset d-flex d-lg-none js-open-mobile-menu">
               <span></span><span></span><span></span>
             </button>
-            <nav class="nav header__nav js-mobile-menu">
-              <button class="d-block d-lg-none btn-reset nav__close js-close-mobile-menu">
+            <nav class="top-nav header__nav js-mobile-menu">
+              <button class="d-block d-lg-none btn-reset top-nav__close js-close-mobile-menu">
                 <svg width="25" height="25">
                  <use xlink:href="assets/img/sprite.svg#icon-close"></use>
                 </svg>
               </button>
-              <ul class="nav__list">
-                <li class="nav__item"><a href="" class="nav__link">О нас</a></li>
-                <li class="nav__item"><a href="" class="nav__link">Доставка и оплата</a></li>
-                <li class="nav__item"><a href="" class="nav__link">Вопросы и ответы</a></li>
-                <li class="nav__item"><a href="" class="nav__link">Новости и статьи </a></li>
-                <li class="nav__item"><a href="" class="nav__link">Контакты</a></li>
+              <ul class="top-nav__list">
+                <li class="top-nav__item"><a href="" class="top-nav__link">О нас</a></li>
+                <li class="top-nav__item"><a href="" class="top-nav__link">Доставка и оплата</a></li>
+                <li class="top-nav__item"><a href="" class="top-nav__link">Вопросы и ответы</a></li>
+                <li class="top-nav__item"><a href="" class="top-nav__link">Новости и статьи </a></li>
+                <li class="top-nav__item"><a href="" class="top-nav__link">Контакты</a></li>
               </ul>
             </nav>
           </div>
@@ -1114,7 +1114,7 @@
               <input
                 class="form__input"
                 id="login-password"
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Введите пароль"
                 required
@@ -1164,7 +1164,7 @@
               <input
                 class="form__input"
                 id="reg-password"
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Введите пароль"
                 required
@@ -1175,7 +1175,7 @@
               <input
                 class="form__input"
                 id="reg-password-confirm"
-                type="text"
+                type="password"
                 name="password-confirm"
                 placeholder="Введите пароль"
                 required
@@ -1194,9 +1194,23 @@
             <button class="btn btn-reset form__submit login__submit">Зарегистрироваться</button>
           </form>
         </div>
-    
       </div>
+    </div>
     
+    
+    <div class="cart-result" id="cart-result">
+      <div class="cart-result__heading">
+        <img src="assets/img/sprite.svg#result-logo" alt="" class="cart-result__logo">
+        <div class="cart-result__thanks">
+          <p class="cart-result__caption">СПАСИБО ЗА ЗАКАЗ!</p>
+          <p class="cart-result__subcaption">Оплата успешно прошла</p>
+        </div>
+      </div>
+      <div class="cart-result__body">
+        <p class="cart-result__description">Отследить и посмотреть статус вашего заказа можно в личном кабинете</p>
+        <a href="" class="btn-reset btn cart-result__btn mb-2">В личный кабинет</a>
+        <a href="" class="btn-reset btn cart-result__btn cart-result__btn_transparent">На главную</a>
+      </div>
     </div>
     <!-- build:js -->
     <script src="assets/vendor/js/jquery.js"></script>

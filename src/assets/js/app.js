@@ -4,7 +4,7 @@ $(() => {
 });
 
 //fancybox
-$(()=>{
+$(() => {
   $('[data-fancybox]').fancybox({
     animationEffect: "zoom-in-out",
     animationDuration: 600,
@@ -13,14 +13,7 @@ $(()=>{
   });
 })
 
-//add to favorite
-
-
-
-
-
-
-//inout number
+//input number
 $(() => {
 
   $('.input-count .input-count_minus').click(function () {
@@ -95,39 +88,38 @@ $(() => {
   const swiper = tab.querySelector('.swiper');
   const useful_swiper = tab.querySelector('.js-useful-slider');
   const tabsBtn = document.querySelectorAll('.tabs__btn');
-    if (swiper && useful_swiper) {
-      const usSwiper = new Swiper(useful_swiper, {
-        setWrapperSize: true,
-        direction: 'horizontal',
-        navigation: {
-          nextEl: ".useful-button-next",
-          prevEl: ".useful-button-prev",
+  if (swiper && useful_swiper) {
+    const usSwiper = new Swiper(useful_swiper, {
+      setWrapperSize: true,
+      direction: 'horizontal',
+      navigation: {
+        nextEl: ".useful-button-next",
+        prevEl: ".useful-button-prev",
+      },
+      observer: true,
+      observeParents: true,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 0,
         },
-        observer: true,
-        observeParents: true,
-        breakpoints: {
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 0,
-          },
-          576: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          900: {
-            slidesPerView: 3,
-          },
-          1200: {
-            spaceBetween: 40,
-            slidesPerView: 3,
-          }
+        576: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        900: {
+          slidesPerView: 3,
+        },
+        1200: {
+          spaceBetween: 40,
+          slidesPerView: 3,
         }
-      });
-    }
+      }
+    });
+  }
 });
 
 // tabs
-
 document.addEventListener('DOMContentLoaded', function () {
   const tabsBtn = document.querySelectorAll('.tabs__btn');
   tabsBtn.forEach(function (el) {
@@ -149,6 +141,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
+//add to favorite
 $(() => {
   $('.js-add-to-favorite').click(function () {
     $(this).toggleClass('is-active')
@@ -228,7 +222,7 @@ $(() => {
 });
 
 
-// search city
+// change city in header
 (async () => {
   try {
     let response = await fetch("assets/data/city.json")
@@ -267,6 +261,7 @@ $(() => {
 
     function closeMenu() {
       $(".cities").removeClass("active")
+      $(".js-open-cities").removeClass('is-active')
     }
 
     $('.cities').click(function (event) {
@@ -307,7 +302,7 @@ $(() => {
 
 
 // custom select
-$(document).ready(function() {
+$(document).ready(function () {
   $('.js-select-sort').select2({
     minimumResultsForSearch: Infinity,
     placeholder: 'Сортировать по'
@@ -323,5 +318,81 @@ $(document).ready(function() {
   $('.js-select-forms').select2({
     minimumResultsForSearch: Infinity,
     placeholder: 'Форма выпуска'
+  });
+});
+
+//custom scroll in locations cart
+$(() => {
+  if ($('#locationsList').length > 0) {
+    new SimpleBar(document.getElementById('locationsList'), {
+      autoHide: false
+    })
+  }
+})
+
+// dropdown location in cart
+$(() => {
+  $('.js-open-location-info').on('click', function () {
+    $(this)
+      .parents('.locations__item')
+      .toggleClass('is-active')
+      .find('.locations__info').slideToggle();
+    $(this).text($(this).text() == 'Как найти' ? 'Свернуть' : 'Как найти');
+  });
+});
+
+// search loaction in cart
+$(() => {
+  $('.js-location-input').on('input', function () {
+    let search = $(this).val();
+    searchData(search);
+  });
+
+  function searchData(search) {
+    let towns = $('.locations__item');
+    towns.each(function () {
+      if ($(this).text().indexOf(search) === -1) {
+        $(this).addClass('item_hide');
+      } else {
+        $(this).removeClass('item_hide');
+      }
+    });
+  }
+});
+
+// change location in cart
+$(() => {
+  let changeBtn = $('.js-change-location');
+  changeBtn.on('click', function () {
+    changeBtn.removeClass('is-active').text('Выбрать')
+
+    if (!($(this).hasClass('is-active'))) {
+      $(this)
+        .addClass('is-active')
+        .text('Выбрано')
+    } else {
+      $(this).removeClass('is-active').text('Выбрать')
+    }
+
+    if (changeBtn.hasClass('is-active')) {
+      $('.cart-obtain__btn').removeAttr('disabled')
+    } else {
+      $('.cart-obtain__btn').attr('disabled', 'true')
+    }
+  });
+});
+
+// show pass in input
+$(() => {
+  const passField = document.querySelector(".js-show-pass-input");
+  const showBtn = document.querySelector(".js-show-pass");
+  showBtn.onclick = (() => {
+    if (passField.type === "password") {
+      passField.type = "text";
+      showBtn.classList.add("is-active");
+    } else {
+      passField.type = "password";
+      showBtn.classList.remove("is-active");
+    }
   });
 });

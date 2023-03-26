@@ -176,15 +176,19 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-
   svg {
     fill: none;
     stroke: #ad4242;
-    stroke-width: 30px;
-    transition: fill .3s ease-in-out;
+    transition: fill .3s ease-in-out, stroke .3s ease-in-out;
+    stroke-width: 50px;
   }
-  &.is-active svg {
+  &.is-active svg,
+  &:hover svg {
     fill: #ad4242;
+  }
+  &.is-active:hover svg {
+    fill: #424D61;
+    stroke: #424D61;
   }
 }
 
