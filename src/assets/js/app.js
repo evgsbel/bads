@@ -223,71 +223,99 @@ $(() => {
 
 
 // change city in header
-(async () => {
-  try {
-    let response = await fetch("assets/data/city.json")
-    let array = await response.json()
+$(() => {
+  new SimpleBar(document.getElementById('citiesList'), {
+    autoHide: false
+  });
 
-    let parent = document.querySelector('.cities__list')
-    array.forEach(item => {
-      let elem = document.createElement("li");
-      elem.classList.add('cities__item')
-      elem.innerHTML = `${item.city}`;
-      parent.appendChild(elem);
-    })
-    new SimpleBar(document.getElementById('citiesList'), {
-      autoHide: false
-    })
-    $(".js-open-cities").click(function (event) {
-      toggleMenu();
-      event.stopPropagation();
-    });
+  $(".js-open-cities").click(function (event) {
+    toggleMenu(this);
+    event.stopPropagation();
+  });
 
-    $('.cities__item').click(function () {
-      $('.js-open-cities').html($(this).text());
-      toggleMenu();
-    });
+  $('.cities__item').click(function () {
+    $('.js-open-cities').html($(this).text());
+    toggleMenu();
+  });
 
-    function toggleMenu() {
-      let menu = $(".cities");
-      if (!menu.hasClass('active')) {
-        window.addEventListener('click', closeMenu);
-      } else {
-        window.removeEventListener('click', closeMenu);
-      }
-      menu.toggleClass("active");
-      $(".js-open-cities").toggleClass('is-active')
+  function toggleMenu() {
+    let menu = $(".js-cities-container");
+    if (!menu.hasClass('active')) {
+      window.addEventListener('click', closeMenu);
+    } else {
+      window.removeEventListener('click', closeMenu);
     }
-
-    function closeMenu() {
-      $(".cities").removeClass("active")
-      $(".js-open-cities").removeClass('is-active')
-    }
-
-    $('.cities').click(function (event) {
-      event.stopPropagation();
-    });
-
-
-    $('.cities__input').on('input', function () {
-      let search = $(this).val();
-      searchData(search);
-    });
-
-    function searchData(search) {
-      let towns = $('.cities__item');
-      towns.each(function () {
-        if ($(this).text().indexOf(search) === -1) {
-          $(this).addClass('item_hide');
-        } else {
-          $(this).removeClass('item_hide');
-        }
-      });
-    }
-  } catch (err) {
-    alert("Error: " + err)
+    menu.toggleClass("active");
+    $(".js-open-cities").toggleClass('is-active')
   }
-})()
+
+  function closeMenu() {
+    $(".js-cities-container").removeClass("active")
+    $(".js-open-cities").removeClass('is-active')
+  }
+
+  $('.js-cities-container').click(function (event) {
+    event.stopPropagation();
+  });
+
+
+  $('.cities__input').on('input', function () {
+    let search = $(this).val();
+    searchData(search);
+  });
+
+  function searchData(search) {
+    let towns = $('.cities__item');
+    towns.each(function () {
+      if ($(this).text().indexOf(search) === -1) {
+        $(this).addClass('item_hide');
+      } else {
+        $(this).removeClass('item_hide');
+      }
+    });
+  }
+})
+
+// change city in header
+$(() => {
+
+  new SimpleBar(document.getElementById('citiesListCabinet'), {
+    autoHide: false
+  });
+
+
+  $(".js-open-cities-user").click(function (event) {
+    toggleMenu(this);
+    event.stopPropagation();
+  });
+
+  $('.cities__item').click(function () {
+    $('.js-open-cities-user').html($(this).text());
+    toggleMenu();
+  });
+
+  function toggleMenu() {
+    let menu = $(".js-cities-container-user");
+    if (!menu.hasClass('active')) {
+      window.addEventListener('click', closeMenu);
+    } else {
+      window.removeEventListener('click', closeMenu);
+    }
+    menu.toggleClass("active");
+    $(".js-open-cities-user").toggleClass('is-active')
+  }
+
+  function closeMenu() {
+    $(".js-cities-container-user").removeClass("active")
+    $(".js-open-cities-user").removeClass('is-active')
+  }
+
+  $('.js-cities-container').click(function (event) {
+    event.stopPropagation();
+  });
+
+
+})
 
 // change text in small device
 $(() => {
@@ -394,5 +422,16 @@ $(() => {
       passField.type = "password";
       showBtn.classList.remove("is-active");
     }
+  });
+});
+
+// dropdown order item in cabinet
+$(() => {
+  $('.order-list__arrow').on('click', function () {
+    $(this).toggleClass('is-active')
+    $(this)
+      .parents('.order-list__body')
+      .find('.order-list-products').slideToggle();
+
   });
 });

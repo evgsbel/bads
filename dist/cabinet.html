@@ -56,13 +56,34 @@
                   type="button">
                   Самара
                 </button>
-                <div class="cities">
+                <div class="cities js-cities-container">
                   <div class="cities__hide" >
                     <div class="cities__heading">
                     <input type="text" class="cities__input" autocomplete="off" value="" placeholder="Поиск по адресу">
                     </div>
                     <div class="cities__wr" id="citiesList">
-                    <ul class="cities__list"></ul>
+                    <ul class="cities__list">
+                      <li class="cities__item">Москва</li>
+                      <li class="cities__item">Валуево</li>
+                      <li class="cities__item">Самара</li>
+                      <li class="cities__item">Саратов</li>
+                      <li class="cities__item">Сантк-Петербург</li>
+                      <li class="cities__item">Воронеж</li>
+                      <li class="cities__item">Уфа</li>
+                      <li class="cities__item">Ульяновск</li>
+                      <li class="cities__item">Казань</li>
+                      <li class="cities__item">Омск</li>
+                      <li class="cities__item">Киров</li>
+                      <li class="cities__item">Челябинск</li>
+                      <li class="cities__item">Архангельск</li>
+                      <li class="cities__item">Астрахань</li>
+                      <li class="cities__item">Сочи</li>
+                      <li class="cities__item">Краснодар</li>
+                      <li class="cities__item">Пермь</li>
+                      <li class="cities__item">Тюмень</li>
+                      <li class="cities__item">Тула</li>
+                      <li class="cities__item">Владивосток</li>
+                    </ul>
                     </div>
                   </div>
                 </div>
@@ -300,18 +321,39 @@
                         <p class="profile__caption">Выберите город</p>
                         <div class="city header__city">
                           <button
-                            class="btn-reset city__btn js-open-cities"
+                            class="btn-reset city__btn js-open-cities-user"
                             type="button">
                             Самара
                           </button>
-                          <div class="cities">
+                          <div class="profile__cities cities js-cities-container-user">
                             <div class="cities__hide">
                               <div class="cities__heading">
                                 <input type="text" class="cities__input" autocomplete="off" value=""
                                        placeholder="Поиск по адресу">
                               </div>
-                              <div class="cities__wr" id="citiesList">
-                                <ul class="cities__list"></ul>
+                              <div class="cities__wr" id="citiesListCabinet">
+                                <ul class="cities__list">
+                                  <li class="cities__item">Москва</li>
+                                  <li class="cities__item">Валуево</li>
+                                  <li class="cities__item">Самара</li>
+                                  <li class="cities__item">Саратов</li>
+                                  <li class="cities__item">Сантк-Петербург</li>
+                                  <li class="cities__item">Воронеж</li>
+                                  <li class="cities__item">Уфа</li>
+                                  <li class="cities__item">Ульяновск</li>
+                                  <li class="cities__item">Казань</li>
+                                  <li class="cities__item">Омск</li>
+                                  <li class="cities__item">Киров</li>
+                                  <li class="cities__item">Челябинск</li>
+                                  <li class="cities__item">Архангельск</li>
+                                  <li class="cities__item">Астрахань</li>
+                                  <li class="cities__item">Сочи</li>
+                                  <li class="cities__item">Краснодар</li>
+                                  <li class="cities__item">Пермь</li>
+                                  <li class="cities__item">Тюмень</li>
+                                  <li class="cities__item">Тула</li>
+                                  <li class="cities__item">Владивосток</li>
+                                </ul>
                               </div>
                             </div>
                           </div>
@@ -322,7 +364,7 @@
                         <div class="cart-pay__item profile__location-item">
                           <div class="locations__item profile__location-item cart-pay__location-item">
                             <p class="locations__address">ул. Московская, д 33</p>
-                            <button class="btn-reset locations__readmore ">Аптеки Плюс</button>
+                            <p class="locations__readmore">Аптеки Плюс</p>
                             <p class="locations__time">Ежедневно: с 9:00 до 21:00</p>
                           </div>
                           <a href="" class="btn btn-reset profile__location-change cart-pay__btn">Изменить</a>
@@ -332,14 +374,356 @@
                   </div>
                 </div>
                 <div class="tabs__content order-history" data-target="order-history">
-                  <div class="cabinet__empty">
-                    <p>История заказов пуста</p>
+                  <!-- <div class="cabinet__empty">-->
+                  <!-- <p>История заказов пуста</p>-->
+                  <!-- </div>-->
+                  <div class="order-list">
+                    <div class="order-list__item">
+                      <div class="order-list__heading order-list-heading">
+                        <div class="order-list-heading__left">
+                          <div class="order-list-heading__info">
+                            <p class="order-list-heading_grey">№123456789</p>
+                            <p class="order-list-heading_black">01.03.2023</p>
+                          </div>
+                          <div class="order-list-heading__info">
+                            <p class="order-list-heading_grey">Статус оплаты</p>
+                            <p class="order-list-heading_black">Оплачено</p>
+                          </div>
+                        </div>
+                        <div class="order-list-heading__right">
+                          <button class="btn btn-reset order-list-heading__btn">Повторить заказ</button>
+                          <div class="order-list-heading__status"><span></span>Выдан</div>
+                        </div>
+                      </div>
+                      <div class="order-list__body">
+                        <div class="order-list__inner">
+                          <div class="cart-pay__item profile__location-item">
+                            <div class="locations__item profile__location-item cart-pay__location-item">
+                              <p class="locations__address">ул. Московская, д 33</p>
+                              <button class="btn-reset locations__readmore js-open-location-info">Как найти</button>
+                              <p class="locations__time">Ежедневно: с 9:00 до 21:00</p>
+                              <div class="locations__info">
+                                <p class="locations__description">Небольшое описание пункта выдачи</p>
+                                <div class="locations__images">
+                                  <img src="assets/img/lc-01.jpg" alt="Адрес">
+                                  <img src="assets/img/lc-02.jpg" alt="Адрес">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <button class="btn-reset js-open-order-item order-list__arrow">
+                            <svg width="20" height="13" class="">
+                              <use xlink:href="assets/img/sprite.svg#icon-arrow-bottom"></use>
+                            </svg>
+                          </button>
+                        </div>
+                        <div class="order-list-products">
+                          <div class="order-list-products__wrapper">
+                            <div class="order-list-products__item">
+                              <div class="order-list-products__img">
+                                <img src="assets/img/pr-01.jpg" alt="Продукт">
+                              </div>
+                              <div class="order-list-products__info">
+                                <p class="order-list-products__caption">а-Токоферола ацетат капс 100 мг x30</p>
+                                <div class="flex order-list-products__count">
+                                  <p class="order-list-products__price">590 руб.</p>
+                                  <p class="order-list-products__quantity">Количество: 1</p>
+                                </div>
+                              </div>
+                              <button class="btn-reset to-favorite js-add-to-favorite">
+                                <svg width="20px" height="22px">
+                                  <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                                </svg>
+                              </button>
+                            </div>
+                            <div class="order-list-products__item">
+                              <div class="order-list-products__img">
+                                <img src="assets/img/pr-02.jpg" alt="Продукт">
+                              </div>
+                              <div class="order-list-products__info">
+                                <p class="order-list-products__caption">а-Токоферола ацетат капс 100 мг x30</p>
+                                <div class="flex order-list-products__count">
+                                  <p class="order-list-products__price">590 руб.</p>
+                                  <p class="order-list-products__quantity">Количество: 1</p>
+                                </div>
+                              </div>
+                              <button class="btn-reset to-favorite js-add-to-favorite">
+                                <svg width="20px" height="22px">
+                                  <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                                </svg>
+                              </button>
+                            </div>
+                            <div class="order-list-products__item">
+                              <div class="order-list-products__img">
+                                <img src="assets/img/pr-03.jpg" alt="Продукт">
+                              </div>
+                              <div class="order-list-products__info">
+                                <p class="order-list-products__caption">а-Токоферола ацетат капс 100 мг x30</p>
+                                <div class="flex order-list-products__count">
+                                  <p class="order-list-products__price">590 руб.</p>
+                                  <p class="order-list-products__quantity">Количество: 1</p>
+                                </div>
+                              </div>
+                              <button class="btn-reset to-favorite js-add-to-favorite">
+                                <svg width="20px" height="22px">
+                                  <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                                </svg>
+                              </button>
+                            </div>
+                            <div class="order-list-products__item">
+                              <div class="order-list-products__img">
+                                <img src="assets/img/pr-04.jpg" alt="Продукт">
+                              </div>
+                              <div class="order-list-products__info">
+                                <p class="order-list-products__caption">а-Токоферола ацетат капс 100 мг x30</p>
+                                <div class="flex order-list-products__count">
+                                  <p class="order-list-products__price">590 руб.</p>
+                                  <p class="order-list-products__quantity">Количество: 1</p>
+                                </div>
+                              </div>
+                              <button class="btn-reset to-favorite js-add-to-favorite">
+                                <svg width="20px" height="22px">
+                                  <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="order-list__item">
+                      <div class="order-list__heading order-list-heading">
+                        <div class="order-list-heading__left">
+                          <div class="order-list-heading__info">
+                            <p class="order-list-heading_grey">№123456789</p>
+                            <p class="order-list-heading_black">01.03.2023</p>
+                          </div>
+                          <div class="order-list-heading__info">
+                            <p class="order-list-heading_grey">Статус оплаты</p>
+                            <p class="order-list-heading_black">Оплачено</p>
+                          </div>
+                        </div>
+                        <div class="order-list-heading__right">
+                          <button class="btn btn-reset order-list-heading__btn">Повторить заказ</button>
+                          <div class="order-list-heading__status"><span></span>Передан в доставку</div>
+                        </div>
+                      </div>
+                      <div class="order-list__body">
+                        <div class="order-list__inner">
+                          <div class="cart-pay__item profile__location-item">
+                            <div class="locations__item profile__location-item cart-pay__location-item">
+                              <p class="locations__address">ул. Московская, д 33</p>
+                              <button class="btn-reset locations__readmore js-open-location-info">Как найти</button>
+                              <p class="locations__time">Ежедневно: с 9:00 до 21:00</p>
+                              <div class="locations__info">
+                                <p class="locations__description">Небольшое описание пункта выдачи</p>
+                                <div class="locations__images">
+                                  <img src="assets/img/lc-01.jpg" alt="Адрес">
+                                  <img src="assets/img/lc-02.jpg" alt="Адрес">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <button class="btn-reset js-open-order-item order-list__arrow is-active">
+                            <svg width="20" height="13" class="">
+                              <use xlink:href="assets/img/sprite.svg#icon-arrow-bottom"></use>
+                            </svg>
+                          </button>
+                        </div>
+                        <div class="order-list-products" style="display: block">
+                          <div class="order-list-products__wrapper">
+                            <div class="order-list-products__item">
+                              <div class="order-list-products__img">
+                                <img src="assets/img/pr-01.jpg" alt="Продукт">
+                              </div>
+                              <div class="order-list-products__info">
+                                <p class="order-list-products__caption">а-Токоферола ацетат капс 100 мг x30</p>
+                                <div class="flex order-list-products__count">
+                                  <p class="order-list-products__price">590 руб.</p>
+                                  <p class="order-list-products__quantity">Количество: 1</p>
+                                </div>
+                              </div>
+                              <button class="btn-reset to-favorite js-add-to-favorite">
+                                <svg width="20px" height="22px">
+                                  <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                                </svg>
+                              </button>
+                            </div>
+                            <div class="order-list-products__item">
+                              <div class="order-list-products__img">
+                                <img src="assets/img/pr-02.jpg" alt="Продукт">
+                              </div>
+                              <div class="order-list-products__info">
+                                <p class="order-list-products__caption">а-Токоферола ацетат капс 100 мг x30</p>
+                                <div class="flex order-list-products__count">
+                                  <p class="order-list-products__price">590 руб.</p>
+                                  <p class="order-list-products__quantity">Количество: 1</p>
+                                </div>
+                              </div>
+                              <button class="btn-reset to-favorite js-add-to-favorite">
+                                <svg width="20px" height="22px">
+                                  <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                                </svg>
+                              </button>
+                            </div>
+                            <div class="order-list-products__item">
+                              <div class="order-list-products__img">
+                                <img src="assets/img/pr-03.jpg" alt="Продукт">
+                              </div>
+                              <div class="order-list-products__info">
+                                <p class="order-list-products__caption">а-Токоферола ацетат капс 100 мг x30</p>
+                                <div class="flex order-list-products__count">
+                                  <p class="order-list-products__price">590 руб.</p>
+                                  <p class="order-list-products__quantity">Количество: 1</p>
+                                </div>
+                              </div>
+                              <button class="btn-reset to-favorite js-add-to-favorite">
+                                <svg width="20px" height="22px">
+                                  <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                                </svg>
+                              </button>
+                            </div>
+                            <div class="order-list-products__item">
+                              <div class="order-list-products__img">
+                                <img src="assets/img/pr-04.jpg" alt="Продукт">
+                              </div>
+                              <div class="order-list-products__info">
+                                <p class="order-list-products__caption">а-Токоферола ацетат капс 100 мг x30</p>
+                                <div class="flex order-list-products__count">
+                                  <p class="order-list-products__price">590 руб.</p>
+                                  <p class="order-list-products__quantity">Количество: 1</p>
+                                </div>
+                              </div>
+                              <button class="btn-reset to-favorite js-add-to-favorite">
+                                <svg width="20px" height="22px">
+                                  <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="order-list__item">
+                    <div class="order-list__heading order-list-heading">
+                      <div class="order-list-heading__left">
+                        <div class="order-list-heading__info">
+                          <p class="order-list-heading_grey">№123456789</p>
+                          <p class="order-list-heading_black">01.03.2023</p>
+                        </div>
+                        <div class="order-list-heading__info">
+                          <p class="order-list-heading_grey">Статус оплаты</p>
+                          <p class="order-list-heading_black">Оплачено</p>
+                        </div>
+                      </div>
+                      <div class="order-list-heading__right">
+                        <button class="btn btn-reset order-list-heading__btn">Повторить заказ</button>
+                        <div class="order-list-heading__status"><span></span>Выдан</div>
+                      </div>
+                    </div>
+                    <div class="order-list__body">
+                      <div class="order-list__inner">
+                        <div class="cart-pay__item profile__location-item">
+                          <div class="locations__item profile__location-item cart-pay__location-item">
+                            <p class="locations__address">ул. Московская, д 33</p>
+                            <button class="btn-reset locations__readmore js-open-location-info">Как найти</button>
+                            <p class="locations__time">Ежедневно: с 9:00 до 21:00</p>
+                            <div class="locations__info">
+                              <p class="locations__description">Небольшое описание пункта выдачи</p>
+                              <div class="locations__images">
+                                <img src="assets/img/lc-01.jpg" alt="Адрес">
+                                <img src="assets/img/lc-02.jpg" alt="Адрес">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <button class="btn-reset js-open-order-item order-list__arrow">
+                          <svg width="20" height="13" class="">
+                            <use xlink:href="assets/img/sprite.svg#icon-arrow-bottom"></use>
+                          </svg>
+                        </button>
+                      </div>
+                      <div class="order-list-products">
+                        <div class="order-list-products__wrapper">
+                          <div class="order-list-products__item">
+                            <div class="order-list-products__img">
+                              <img src="assets/img/pr-01.jpg" alt="Продукт">
+                            </div>
+                            <div class="order-list-products__info">
+                              <p class="order-list-products__caption">а-Токоферола ацетат капс 100 мг x30</p>
+                              <div class="flex order-list-products__count">
+                                <p class="order-list-products__price">590 руб.</p>
+                                <p class="order-list-products__quantity">Количество: 1</p>
+                              </div>
+                            </div>
+                            <button class="btn-reset to-favorite js-add-to-favorite">
+                              <svg width="20px" height="22px">
+                                <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                          </div>
+                          <div class="order-list-products__item">
+                            <div class="order-list-products__img">
+                              <img src="assets/img/pr-02.jpg" alt="Продукт">
+                            </div>
+                            <div class="order-list-products__info">
+                              <p class="order-list-products__caption">а-Токоферола ацетат капс 100 мг x30</p>
+                              <div class="flex order-list-products__count">
+                                <p class="order-list-products__price">590 руб.</p>
+                                <p class="order-list-products__quantity">Количество: 1</p>
+                              </div>
+                            </div>
+                            <button class="btn-reset to-favorite js-add-to-favorite">
+                              <svg width="20px" height="22px">
+                                <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                          </div>
+                          <div class="order-list-products__item">
+                            <div class="order-list-products__img">
+                              <img src="assets/img/pr-03.jpg" alt="Продукт">
+                            </div>
+                            <div class="order-list-products__info">
+                              <p class="order-list-products__caption">а-Токоферола ацетат капс 100 мг x30</p>
+                              <div class="flex order-list-products__count">
+                                <p class="order-list-products__price">590 руб.</p>
+                                <p class="order-list-products__quantity">Количество: 1</p>
+                              </div>
+                            </div>
+                            <button class="btn-reset to-favorite js-add-to-favorite">
+                              <svg width="20px" height="22px">
+                                <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                          </div>
+                          <div class="order-list-products__item">
+                            <div class="order-list-products__img">
+                              <img src="assets/img/pr-04.jpg" alt="Продукт">
+                            </div>
+                            <div class="order-list-products__info">
+                              <p class="order-list-products__caption">а-Токоферола ацетат капс 100 мг x30</p>
+                              <div class="flex order-list-products__count">
+                                <p class="order-list-products__price">590 руб.</p>
+                                <p class="order-list-products__quantity">Количество: 1</p>
+                              </div>
+                            </div>
+                            <button class="btn-reset to-favorite js-add-to-favorite">
+                              <svg width="20px" height="22px">
+                                <use xlink:href="assets/img/sprite.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                  </div>
+        
                 </div>
                 <div class="tabs__content favorite" data-target="favorite">
-                  <!--          <div class="cabinet__empty">-->
-                  <!--            <p>Нет избранных товаров</p>-->
-                  <!--          </div>-->
+                  <!--<div class="cabinet__empty">-->
+                  <!--<p>Нет избранных товаров</p>-->
+                  <!--</div>-->
                   <div class="cart-product favorite-product">
                     <ul class="cart-product__list favorite-product__list">
                       <li class="cart-product__item favorite-product__item">
