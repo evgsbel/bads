@@ -261,9 +261,11 @@ $(function () {
 
 // change city in header
 $(function () {
-  new SimpleBar(document.getElementById('citiesListCabinet'), {
-    autoHide: false
-  });
+  if ($('#citiesListCabinet').length > 0) {
+    new SimpleBar(document.getElementById('citiesListCabinet'), {
+      autoHide: false
+    });
+  }
   $(".js-open-cities-user").click(function (event) {
     toggleMenu(this);
     event.stopPropagation();
@@ -338,7 +340,7 @@ $(function () {
   });
 });
 
-// search loaction in cart
+// search location in cart
 $(function () {
   $('.js-location-input').on('input', function () {
     var search = $(this).val();
@@ -378,15 +380,17 @@ $(function () {
 $(function () {
   var passField = document.querySelector(".js-show-pass-input");
   var showBtn = document.querySelector(".js-show-pass");
-  showBtn.onclick = function () {
-    if (passField.type === "password") {
-      passField.type = "text";
-      showBtn.classList.add("is-active");
-    } else {
-      passField.type = "password";
-      showBtn.classList.remove("is-active");
-    }
-  };
+  if ($('.js-show-pass').length > 0) {
+    showBtn.onclick = function () {
+      if (passField.type === "password") {
+        passField.type = "text";
+        showBtn.classList.add("is-active");
+      } else {
+        passField.type = "password";
+        showBtn.classList.remove("is-active");
+      }
+    };
+  }
 });
 
 // dropdown order item in cabinet
@@ -396,3 +400,64 @@ $(function () {
     $(this).parents('.order-list__body').find('.order-list-products').slideToggle();
   });
 });
+
+// map
+ymaps.ready(init);
+function init() {
+  // Создание карты.
+  var myMap = new ymaps.Map("map", {
+    zoom: 15,
+    center: [53.206434, 50.121681],
+    controls: []
+  });
+  var destinations = {
+    'Московское ш.5': [53.291865, 50.274951],
+    'Клиническая 32': [53.198128, 50.140177],
+    'Ленинская 301': [53.202669, 50.125400],
+    'Полевая 9': [53.206434, 50.121681],
+    'просп. Масленникова, 47': [53.205663, 50.162312],
+    'Мичурина 137А': [53.212345, 50.159365],
+    'Красноармейская 121': [53.188179, 50.121600]
+  };
+  var changeBtn = $('.js-change-location');
+  changeBtn.on('click', function (e) {
+    e.preventDefault();
+    var pos = $(this).data('map');
+
+    // переходим по координатам
+    myMap.panTo(destinations[pos], {
+      flying: true,
+      delay: 1500
+    }).then(function () {
+      myMap.options.set('maxAnimationZoomDifference', Infinity);
+      myMap.setZoom(17, {
+        duration: 1500
+      });
+    });
+  });
+  for (var _i = 0, _Object$keys = Object.keys(destinations); _i < _Object$keys.length; _i++) {
+    var pls = _Object$keys[_i];
+    var myPlacemark = new ymaps.Placemark(destinations[pls], {}, {
+      iconLayout: 'default#image',
+      iconImageHref: 'assets/img/map-icon.png',
+      iconImageSize: [40, 40],
+      iconContent: pls
+    });
+    myMap.geoObjects.add(myPlacemark);
+    myPlacemark.events.add('click', function (e) {
+      var activeGeoObject = e.get('target');
+      var iconContent = activeGeoObject.options.get('iconContent');
+      changeBtn.removeClass('is-active').text('Выбрать');
+      $('.cart-obtain__btn').attr('disabled', 'true');
+      changeBtn.each(function () {
+        var btnAttr = $(this).data('map');
+        if (iconContent === btnAttr) {
+          $(this).toggleClass('is-active').text('Выбрано');
+          $('.locations__item').addClass('item_hide');
+          $(this).parents('.locations__item').removeClass('item_hide');
+          $('.cart-obtain__btn').removeAttr('disabled');
+        }
+      });
+    });
+  }
+}
