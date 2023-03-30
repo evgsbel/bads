@@ -15256,6 +15256,9 @@ h2,
 .profile__location-item:first-child {
   border-top: none;
 }
+.profile .locations__images {
+  gap: 0 10px;
+}
 .profile__location-change {
   margin-left: 0;
 }
