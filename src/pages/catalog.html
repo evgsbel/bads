@@ -14,40 +14,73 @@ userName: Личный кабинет
       </div>
       <div class="col-lg-8">
         <div class="filters">
-          <select class="filters__select js-select-sort" name="sort">
-            <option value="">Сортировать по</option>
-            <option value="Сначала дорогие">Сначала дорогие</option>
-            <option value="Сначала дешевые">Сначала дешевые</option>
-            <option value="Наличие">Наличие</option>
-            <option value="Наличие">Наличие</option>
-          </select>
-          <select class="filters__select js-select-brand" name="brands">
-            <option value="">Бренды</option>
-            <option value="Бренд 1">Бренд 1</option>
-            <option value="Бренд 2">Бренд 2</option>
-            <option value="Бренд 3">Бренд 3</option>
-            <option value="Бренд 3">Бренд 4</option>
-          </select>
-          <select class="filters__select js-select-indication" name="indication">
-            <option value="">Показания</option>
-            <option value="Показания 1">Показания 1</option>
-            <option value="Показания 2">Показания 2</option>
-            <option value="Показания 3">Показания 3</option>
-            <option value="Показания 3">Показания 4</option>
-          </select>
-          <select class="filters__select js-select-forms" name="forms">
-            <option value="">Форма выпуска</option>
-            <option value="Форма выпуска 1">Форма выпуска 1</option>
-            <option value="Форма выпуска 2">Форма выпуска 2</option>
-            <option value="Форма выпуска 3">Форма выпуска 3</option>
-            <option value="Форма выпуска 3">Форма выпуска 4</option>
-          </select>
+          <div class="filters__wr">
+            <button class="btn-reset filters__clear js-clear-select">
+              <svg>
+                <use xlink:href="assets/img/sprite.svg#icon-clear-filter"></use>
+              </svg>
+            </button>
+            <select class="filters__select js-select-sort" name="sort">
+              <option value="">Сортировать по</option>
+              <option value="Сначала дорогие">Сначала дорогие</option>
+              <option value="Сначала дешевые">Сначала дешевые</option>
+              <option value="Наличие">Наличие</option>
+              <option value="Наличие">Наличие</option>
+            </select>
+          </div>
+          <div class="filters__wr">
+            <button class="btn-reset filters__clear js-clear-select">
+              <svg>
+                <use xlink:href="assets/img/sprite.svg#icon-clear-filter"></use>
+              </svg>
+            </button>
+            <select class="filters__select js-select-brand" name="brands">
+              <option value="">Бренды</option>
+              <option value="Бренд 1">Бренд 1</option>
+              <option value="Бренд 2">Бренд 2</option>
+              <option value="Бренд 3">Бренд 3</option>
+              <option value="Бренд 3">Бренд 4</option>
+            </select>
+          </div>
+          <div class="filters__wr">
+            <button class="btn-reset filters__clear js-clear-select">
+              <svg>
+                <use xlink:href="assets/img/sprite.svg#icon-clear-filter"></use>
+              </svg>
+            </button>
+            <select class="filters__select js-select-indication" name="indication">
+              <option value="">Показания</option>
+              <option value="Показания 1">Показания 1</option>
+              <option value="Показания 2">Показания 2</option>
+              <option value="Показания 3">Показания 3</option>
+              <option value="Показания 3">Показания 4</option>
+            </select>
+          </div>
+          <div class="filters__wr">
+            <button class="btn-reset filters__clear js-clear-select">
+              <svg>
+                <use xlink:href="assets/img/sprite.svg#icon-clear-filter"></use>
+              </svg>
+            </button>
+            <select class="filters__select js-select-forms" name="forms">
+              <option value="">Форма выпуска</option>
+              <option value="Форма выпуска 1">Форма выпуска 1</option>
+              <option value="Форма выпуска 2">Форма выпуска 2</option>
+              <option value="Форма выпуска 3">Форма выпуска 3</option>
+              <option value="Форма выпуска 3">Форма выпуска 4</option>
+            </select>
+          </div>
+        </div>
+        <div class="mobile-filters">
+          <div class="mobile-filters__nav">
+            <button class="btn-reset mobile-filters__btn js-open-mobile-sorting">Сортировка</button>
+            <button class="btn-reset mobile-filters__btn js-open-mobile-filters">Фильтры</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-
         <div class="product-list__items catalog">
           <div class="product-list__item">
             <img src="assets/img/pr-01.jpg" alt="" class="product-list__img">
@@ -544,3 +577,4 @@ userName: Личный кабинет
     </div>
   </div>
 </section>
+

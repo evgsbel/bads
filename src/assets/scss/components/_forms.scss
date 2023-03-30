@@ -139,6 +139,9 @@
 }
 
 //custom select
+.select2-container {
+  flex: 1 0 auto;
+}
 .select2-container--default .select2-selection--single {
   border: none;
   border-bottom: 1px solid #5c93f5;
@@ -191,6 +194,12 @@
 .select2-container--open .select2-selection--single .select2-selection__arrow {
   transform: rotate(180deg);
 }
+.select2-container--default .select2-selection--single .select2-selection__clear {
+  float: left;
+  position: absolute;
+  left: -30px;
+  margin-right: 10px;
+}
 
 
 //radio button
@@ -235,4 +244,50 @@
   }
 }
 
-
+//checkbox switch
+.switch {
+  display: none;
+  &__label {
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+    padding-left: 29px;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.3;
+    color: #636363;
+    cursor: pointer;
+    a {
+      color: #5588e0;
+    }
+  }
+  & + &__pane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 66px;
+    height: 30px;
+    border: 1px solid #838383;
+    border-radius: 100px;
+    background-color: #fff;
+    transition: border-color .3s ease-in-out;
+  }
+  & + &__pane::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #838383;
+    transition: background-color .3s ease-in-out, left .3s ease-in-out;
+  }
+  &:checked + &__pane {
+    border-color: #5C93F5;
+  }
+  &:checked + &__pane::before {
+    background-color: #5C93F5;
+    left: 37px;
+  }
+}

@@ -122,7 +122,8 @@ function jsVendor() {
     'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js',
     'node_modules/inputmask/dist/inputmask.min.js',
     'node_modules/simplebar/dist/simplebar.min.js',
-    'node_modules/select2/dist/js/select2.min.js'
+    'node_modules/select2/dist/js/select2.min.js',
+    'node_modules/jquery-steps/build/jquery.steps.js'
   ])
     .pipe(dest('dist/assets/vendor/js'))
     .pipe(browserSync.stream());
@@ -319,6 +320,7 @@ function concatScripts() {
     'dist/assets/vendor/js/inputmask.min.js',
     'dist/assets/vendor/js/simplebar.min.js',
     'dist/assets/vendor/js/select2.min.js',
+    'dist/assets/vendor/js/jquery.steps.js',
     'src/assets/js/util/*',
     'src/assets/js/*'
   ])

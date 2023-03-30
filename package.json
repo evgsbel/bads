@@ -61,6 +61,7 @@
     "gulp-svg-sprite": "^1.5.0",
     "inputmask": "^5.0.7",
     "jquery": "^3.6.0",
+    "jquery-steps": "^1.1.0",
     "popper.js": "^1.14.7",
     "resize-observer-polyfill": "^1.5.1",
     "sass": "^1.53.0",

@@ -161,7 +161,10 @@ $(() => {
     )
   });
 });
-
+// add to cart text
+$('.js-add-to-cart').click(function () {
+  $(this).text('В корзине')
+})
 // catalog menu
 $(() => {
   const btnMenu = document.querySelector('.js-open-header-catalog');
@@ -285,36 +288,35 @@ $(() => {
   }
 
 
+  $(".js-open-cities-user").click(function (event) {
+    toggleMenu(this);
+    event.stopPropagation();
+  });
 
-$(".js-open-cities-user").click(function (event) {
-  toggleMenu(this);
-  event.stopPropagation();
-});
+  $('.cities__item').click(function () {
+    $('.js-open-cities-user').html($(this).text());
+    toggleMenu();
+  });
 
-$('.cities__item').click(function () {
-  $('.js-open-cities-user').html($(this).text());
-  toggleMenu();
-});
-
-function toggleMenu() {
-  let menu = $(".js-cities-container-user");
-  if (!menu.hasClass('active')) {
-    window.addEventListener('click', closeMenu);
-  } else {
-    window.removeEventListener('click', closeMenu);
+  function toggleMenu() {
+    let menu = $(".js-cities-container-user");
+    if (!menu.hasClass('active')) {
+      window.addEventListener('click', closeMenu);
+    } else {
+      window.removeEventListener('click', closeMenu);
+    }
+    menu.toggleClass("active");
+    $(".js-open-cities-user").toggleClass('is-active')
   }
-  menu.toggleClass("active");
-  $(".js-open-cities-user").toggleClass('is-active')
-}
 
-function closeMenu() {
-  $(".js-cities-container-user").removeClass("active")
-  $(".js-open-cities-user").removeClass('is-active')
-}
+  function closeMenu() {
+    $(".js-cities-container-user").removeClass("active")
+    $(".js-open-cities-user").removeClass('is-active')
+  }
 
-$('.js-cities-container').click(function (event) {
-  event.stopPropagation();
-});
+  $('.js-cities-container').click(function (event) {
+    event.stopPropagation();
+  });
 
 
 })
@@ -335,21 +337,50 @@ $(() => {
 $(document).ready(function () {
   $('.js-select-sort').select2({
     minimumResultsForSearch: Infinity,
-    placeholder: 'Сортировать по'
+    placeholder: 'Сортировать по',
+    width: 'resolve',
+  }).on('select2:select', function() {
+    $(this)
+      .parent()
+      .find('.js-clear-select')
+      .addClass('is-active')
   });
   $('.js-select-brand').select2({
     minimumResultsForSearch: Infinity,
-    placeholder: 'Бренды'
+    placeholder: 'Бренды',
+  }).on('select2:select', function() {
+    $(this)
+      .parent()
+      .find('.js-clear-select')
+      .addClass('is-active')
   });
   $('.js-select-indication').select2({
     minimumResultsForSearch: Infinity,
-    placeholder: 'Показания'
+    placeholder: 'Показания',
+  }).on('select2:select', function() {
+    $(this)
+      .parent()
+      .find('.js-clear-select')
+      .addClass('is-active')
   });
   $('.js-select-forms').select2({
     minimumResultsForSearch: Infinity,
-    placeholder: 'Форма выпуска'
+    placeholder: 'Форма выпуска',
+  }).on('select2:select', function() {
+    $(this)
+      .parent()
+      .find('.js-clear-select')
+      .addClass('is-active')
   });
+  $('.js-clear-select').click(function() {
+    $(this).removeClass('is-active');
+    $(this)
+      .parent()
+      .find('select')
+      .val(null).trigger('change');
+  })
 });
+
 
 //custom scroll in locations cart
 $(() => {
@@ -442,72 +473,108 @@ $(() => {
 
 
 // map
-ymaps.ready(init);
+$(() => {
+  if ($('#map').length > 0) {
+    ymaps.ready(init);
 
-function init() {
-  // Создание карты.
-  var myMap = new ymaps.Map("map", {
-    zoom: 15,
-    center: [53.206434, 50.121681],
-    controls: []
-  });
-  var destinations = {
-    'Московское ш.5': [53.291865, 50.274951],
-    'Клиническая 32': [53.198128, 50.140177],
-    'Ленинская 301': [53.202669, 50.125400],
-    'Полевая 9': [53.206434, 50.121681],
-    'просп. Масленникова, 47': [53.205663, 50.162312],
-    'Мичурина 137А': [53.212345, 50.159365],
-    'Красноармейская 121': [53.188179, 50.121600]
-  }
-  let changeBtn = $('.js-change-location')
-  changeBtn.on('click', function(e){
-    e.preventDefault();
-
-    var pos = $(this).data('map');
-
-    // переходим по координатам
-    myMap.panTo(destinations[pos], {
-      flying: true,
-      delay: 1500
-    }).then(function () {
-      myMap.options.set('maxAnimationZoomDifference', Infinity);
-      myMap.setZoom(17, {duration: 1500});
-    });
-
-  });
-
-  for (let pls of Object.keys(destinations)) {
-    var myPlacemark = new ymaps.Placemark(destinations[pls], {
-    }, {
-      iconLayout: 'default#image',
-      iconImageHref: 'assets/img/map-icon.png',
-      iconImageSize: [40, 40],
-      iconContent: pls
-
-    });
-    myMap.geoObjects
-      .add(myPlacemark);
-
-    myPlacemark.events.add('click', function (e) {
-
-      let activeGeoObject = e.get('target');
-      let iconContent = activeGeoObject.options.get('iconContent')
-    changeBtn.removeClass('is-active').text('Выбрать')
-
-      $('.cart-obtain__btn').attr('disabled', 'true')
-     changeBtn.each(function() {
-        let btnAttr = $(this).data('map')
-        if (iconContent === btnAttr) {
-          $(this).toggleClass('is-active').text('Выбрано')
-          $('.locations__item').addClass('item_hide')
-          $(this).parents('.locations__item').removeClass('item_hide')
-          $('.cart-obtain__btn').removeAttr('disabled')
-        }
+    function init() {
+      // Создание карты.
+      var myMap = new ymaps.Map("map", {
+        zoom: 15,
+        center: [53.206434, 50.121681],
+        controls: []
       });
-    })
+      var destinations = {
+        'Московское ш.5': [53.291865, 50.274951],
+        'Клиническая 32': [53.198128, 50.140177],
+        'Ленинская 301': [53.202669, 50.125400],
+        'Полевая 9': [53.206434, 50.121681],
+        'просп. Масленникова, 47': [53.205663, 50.162312],
+        'Мичурина 137А': [53.212345, 50.159365],
+        'Красноармейская 121': [53.188179, 50.121600]
+      }
+      let changeBtn = $('.js-change-location')
+      changeBtn.on('click', function (e) {
+        e.preventDefault();
+
+        var pos = $(this).data('map');
+
+        // переходим по координатам
+        myMap.panTo(destinations[pos], {
+          flying: true,
+          delay: 1500
+        }).then(function () {
+          myMap.options.set('maxAnimationZoomDifference', Infinity);
+          myMap.setZoom(17, {duration: 1500});
+        });
+
+      });
+
+      for (let pls of Object.keys(destinations)) {
+        var myPlacemark = new ymaps.Placemark(destinations[pls], {}, {
+          iconLayout: 'default#image',
+          iconImageHref: 'assets/img/map-icon.png',
+          iconImageSize: [40, 40],
+          iconContent: pls
+
+        });
+        myMap.geoObjects
+          .add(myPlacemark);
+
+        myPlacemark.events.add('click', function (e) {
+
+          let activeGeoObject = e.get('target');
+          let iconContent = activeGeoObject.options.get('iconContent')
+          changeBtn.removeClass('is-active').text('Выбрать')
+
+          $('.cart-obtain__btn').attr('disabled', 'true')
+          changeBtn.each(function () {
+            let btnAttr = $(this).data('map')
+            if (iconContent === btnAttr) {
+              $(this).toggleClass('is-active').text('Выбрано')
+              $('.locations__item').addClass('item_hide')
+              $(this).parents('.locations__item').removeClass('item_hide')
+              $('.cart-obtain__btn').removeAttr('disabled')
+            }
+          });
+        })
+      }
+    }
   }
+})
+
+// cart steps
+$("#wizard").steps({
+  headerTag: "h2",
+  transitionEffect: $.fn.steps.transitionEffect.slideLeft,
+  transitionEffectSpeed: 200,
+  titleTemplate: '#title#',
+  labels: {
+    next: "Далее <svg width='21' height='16' viewBox='0 0 21 16' fill='none' xmlns='http://www.w3.org/2000/svg'>\n" +
+      "  <path d='M1 8H20M20 8L13 1M20 8L13 15' stroke='white' stroke-linecap='round' stroke-linejoin='round'/>\n" +
+      "</svg>",
+    previous: "<svg width='21' height='16' viewBox='0 0 21 16' fill='none' xmlns='http://www.w3.org/2000/svg'>\n" +
+      "  <path d='M20 8H1M1 8L8 1M1 8L8 15' stroke='#2688E5' stroke-linecap='round' stroke-linejoin='round'/>\n" +
+      "</svg> Вернуться",
+    finish: "Оформить"
+  }
+})
 
 
+// hide mobile blocks
 
-}
+$('.js-open-mobile-sorting').click(function() {
+  $('.js-hide-sort').addClass('is-open');
+})
+$('.js-open-mobile-filters').click(function() {
+  $('.js-hide-filters').addClass('is-open');
+})
+$('.js-filters-closing').click(function() {
+  $('.hide-filters').removeClass('is-open');
+})
+$('.js-clear-filters').click(function() {
+  console.log('click')
+  $('#sales').prop('checked', false);
+  $('#filter-price-min').val('');
+  $('#filter-price-max').val('');
+})

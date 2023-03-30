@@ -27,10 +27,63 @@
     justify-content: space-between;
     margin-left: 0;
   }
-  @include r(576) {
-   flex-direction: column;
-    gap: 30px;
-    align-items: flex-start;
+  @include r(768) {
+    display: none;
+  }
+  &__wr {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+  }
+  &__clear {
+    visibility: hidden;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+    &.is-active {
+      visibility: visible;
+      opacity: 1;
+    }
+    svg {
+      width: 7px;
+      height: 7px;
+    }
+  }
+}
+
+.mobile-filters {
+  display: none;
+  @include r(768) {
+    display: block;
+  }
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+  }
+  &__btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(50% - 5px);
+    height: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.3;
+    color: #5C93F5;
+    background-color: transparent;
+    &:first-child::before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      right: -2px;
+      width: 1px;
+      height: 30px;
+      background-color: #5C93F5;
+    }
   }
 }
 
