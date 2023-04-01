@@ -97,6 +97,12 @@
   }
   .locations__images {
     gap: 0 10px;
+    @include r(480) {
+     flex-direction: row;
+    }
+    img {
+      max-width: calc(50% - 5px);
+    }
   }
   &__location-change {
     margin-left: 0;

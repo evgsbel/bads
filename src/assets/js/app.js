@@ -167,60 +167,120 @@ $('.js-add-to-cart').click(function () {
 })
 // catalog menu
 $(() => {
-  const btnMenu = document.querySelector('.js-open-header-catalog');
-  const lnkMenu = document.querySelector('.js-open-catalog');
-  const menu = document.querySelector('.js-catalog-menu');
-  const subItem = document.querySelectorAll('.js-catalog-sub-item')
-  const toggleMenu = function () {
-    menu.classList.toggle('is-open');
-    btnMenu.classList.toggle('is-active');
-  };
-  btnMenu.addEventListener('click', function (e) {
-    e.stopPropagation();
-    toggleMenu();
-    subItem[0].classList.add('is-active')
-    subItem[1].classList.remove('is-active')
-  });
-  lnkMenu.addEventListener('click', function (e) {
-    e.stopPropagation();
-    toggleMenu();
-    subItem[1].classList.add('is-active')
-    subItem[0].classList.remove('is-active')
-  });
-  subItem.forEach(function (el) {
-    el.addEventListener('mouseover', function () {
-      el.classList.remove('is-active');
-    })
-  })
-  subItem.forEach(function (el) {
+  window.addEventListener('resize', openCatalogMenu);
+  openCatalogMenu.call(window);
+  function openCatalogMenu() {
+    const btnMenu = document.querySelector('.js-open-header-catalog');
+    const menu = document.querySelector('.js-catalog-menu');
+    const btnClose = document.querySelector('.js-catalog-menu-closing');
+    const subItem = document.querySelectorAll('.js-catalog-sub-item')
+    const lnkMenu = document.querySelector('.js-open-catalog');
+    const lnkMenuMobile = document.querySelector('.js-open-catalog-mobile');
+    const subCaption = document.querySelector('.js-sub-caption');
+    const btnCloseSubcategory = document.querySelector('.js-close-subcategory-mobile');
+    const fixedHeader = document.querySelector('.js-desktop-fixed');
+    const toggleMenu = function () {
+      menu.classList.toggle('is-open');
+      btnMenu.classList.toggle('is-active');
+    };
+    if (window.innerWidth > 1024) {
+      btnMenu.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMenu();
+        subItem[0].classList.add('is-active')
+        subItem[1].classList.remove('is-active')
+      });
+      lnkMenu.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMenu();
+        subItem[1].classList.add('is-active')
+        subItem[0].classList.remove('is-active')
+      });
+      subItem.forEach(function (el) {
+        el.addEventListener('mouseover', function () {
+          el.classList.remove('is-active');
+        })
+      })
+      subItem.forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          el.classList.remove('is-active');
+        })
+      })
+    } else {
+      btnMenu.addEventListener('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        toggleMenu();
+      });
+      lnkMenuMobile.addEventListener('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        toggleMenu();
+        btnCloseSubcategory.classList.remove('is-hide')
+        btnCloseSubcategory.classList.add('is-back')
+        for (let i = 0; i < subItem.length; i++) {
+          subItem[i].classList.add('from-link')
+        }
+        fixedHeader.classList.add('position-static')
+      });
+      subItem.forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          el.classList.add('is-active');
+          btnCloseSubcategory.classList.remove('is-hide', 'is-back')
+          if (el.classList.contains('from-link')) {
+            btnCloseSubcategory.classList.add('back-main')
+          }
+          const subCaptionAttr = el.dataset.caption
+          subCaption.innerHTML = subCaptionAttr
+        })
+      })
+      btnCloseSubcategory.addEventListener('click', function (e) {
 
-    el.addEventListener('click', function (e) {
-      e.preventDefault();
-      el.classList.remove('is-active');
+        for (let i = 0; i < subItem.length; i++) {
+          subItem[i].classList.remove('is-active')
+        }
+        if (this.classList.contains('is-back')) {
+          toggleMenu();
+          fixedHeader.classList.remove('position-static')
+        }
+        if (this.matches('.is-hide.back-main')) {
+          toggleMenu();
+          this.classList.remove('back-main')
+          for (let i = 0; i < subItem.length; i++) {
+            subItem[i].classList.remove('from-link')
+          }
+        }
+        this.classList.add('is-hide')
+
+        subCaption.innerHTML = 'Каталог'
+      })
+    }
+    btnClose.addEventListener('click', function (e) {
+      e.stopPropagation();
+      toggleMenu();
     })
-  })
+  }
+
 });
 
 // mobile menu
 $(() => {
-  const btnMenu = document.querySelector('.js-open-mobile-menu');
+  const btnMenu = document.querySelectorAll('.js-open-mobile-menu');
   const menu = document.querySelector('.js-mobile-menu');
-  const toggleMenu = function () {
-    menu.classList.add('is-open');
-    btnMenu.classList.add('is-active');
-  };
-  btnMenu.addEventListener('click', function (e) {
-    e.stopPropagation();
-    toggleMenu();
-  });
+
+  btnMenu.forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.stopPropagation();
+      menu.classList.add('is-open');
+    });
+  })
+
   const closeBtn = document.querySelector('.js-close-mobile-menu');
-  const closeMenu = function () {
-    menu.classList.remove('is-open');
-    btnMenu.classList.remove('is-active');
-  };
   closeBtn.addEventListener('click', function (e) {
     e.stopPropagation();
-    closeMenu();
+    menu.classList.remove('is-open');
   });
 });
 
@@ -287,7 +347,6 @@ $(() => {
     })
   }
 
-
   $(".js-open-cities-user").click(function (event) {
     toggleMenu(this);
     event.stopPropagation();
@@ -339,7 +398,7 @@ $(document).ready(function () {
     minimumResultsForSearch: Infinity,
     placeholder: 'Сортировать по',
     width: 'resolve',
-  }).on('select2:select', function() {
+  }).on('select2:select', function () {
     $(this)
       .parent()
       .find('.js-clear-select')
@@ -348,7 +407,7 @@ $(document).ready(function () {
   $('.js-select-brand').select2({
     minimumResultsForSearch: Infinity,
     placeholder: 'Бренды',
-  }).on('select2:select', function() {
+  }).on('select2:select', function () {
     $(this)
       .parent()
       .find('.js-clear-select')
@@ -357,7 +416,7 @@ $(document).ready(function () {
   $('.js-select-indication').select2({
     minimumResultsForSearch: Infinity,
     placeholder: 'Показания',
-  }).on('select2:select', function() {
+  }).on('select2:select', function () {
     $(this)
       .parent()
       .find('.js-clear-select')
@@ -366,13 +425,13 @@ $(document).ready(function () {
   $('.js-select-forms').select2({
     minimumResultsForSearch: Infinity,
     placeholder: 'Форма выпуска',
-  }).on('select2:select', function() {
+  }).on('select2:select', function () {
     $(this)
       .parent()
       .find('.js-clear-select')
       .addClass('is-active')
   });
-  $('.js-clear-select').click(function() {
+  $('.js-clear-select').click(function () {
     $(this).removeClass('is-active');
     $(this)
       .parent()
@@ -563,18 +622,41 @@ $("#wizard").steps({
 
 // hide mobile blocks
 
-$('.js-open-mobile-sorting').click(function() {
+$('.js-open-mobile-sorting').click(function () {
   $('.js-hide-sort').addClass('is-open');
 })
-$('.js-open-mobile-filters').click(function() {
+$('.js-open-mobile-filters').click(function () {
   $('.js-hide-filters').addClass('is-open');
 })
-$('.js-filters-closing').click(function() {
+$('.js-filters-closing').click(function () {
   $('.hide-filters').removeClass('is-open');
 })
-$('.js-clear-filters').click(function() {
+$('.js-clear-filters').click(function () {
   console.log('click')
   $('#sales').prop('checked', false);
   $('#filter-price-min').val('');
   $('#filter-price-max').val('');
+})
+
+// fixed header
+$(() => {
+  window.addEventListener('scroll', function () {
+      function stickySidebar() {
+        let scrollDistance = $(document).scrollTop(),
+          headerHeight = $('.header__top').outerHeight(true),
+          $header = $('.js-desktop-fixed'),
+          $headerMobile = $('.header-fixed-mobile');
+        if (scrollDistance >= headerHeight) {
+          $header.addClass('is-fixed');
+          $headerMobile.addClass('is-fixed');
+        } else {
+          $header.removeClass('is-fixed');
+          $headerMobile.removeClass('is-fixed');
+        }
+      }
+      stickySidebar();
+      $(document).scroll(function () {
+        stickySidebar();
+      });
+    })
 })

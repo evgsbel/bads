@@ -160,59 +160,115 @@ $('.js-add-to-cart').click(function () {
 });
 // catalog menu
 $(function () {
-  var btnMenu = document.querySelector('.js-open-header-catalog');
-  var lnkMenu = document.querySelector('.js-open-catalog');
-  var menu = document.querySelector('.js-catalog-menu');
-  var subItem = document.querySelectorAll('.js-catalog-sub-item');
-  var toggleMenu = function toggleMenu() {
-    menu.classList.toggle('is-open');
-    btnMenu.classList.toggle('is-active');
-  };
-  btnMenu.addEventListener('click', function (e) {
-    e.stopPropagation();
-    toggleMenu();
-    subItem[0].classList.add('is-active');
-    subItem[1].classList.remove('is-active');
-  });
-  lnkMenu.addEventListener('click', function (e) {
-    e.stopPropagation();
-    toggleMenu();
-    subItem[1].classList.add('is-active');
-    subItem[0].classList.remove('is-active');
-  });
-  subItem.forEach(function (el) {
-    el.addEventListener('mouseover', function () {
-      el.classList.remove('is-active');
+  window.addEventListener('resize', openCatalogMenu);
+  openCatalogMenu.call(window);
+  function openCatalogMenu() {
+    var btnMenu = document.querySelector('.js-open-header-catalog');
+    var menu = document.querySelector('.js-catalog-menu');
+    var btnClose = document.querySelector('.js-catalog-menu-closing');
+    var subItem = document.querySelectorAll('.js-catalog-sub-item');
+    var lnkMenu = document.querySelector('.js-open-catalog');
+    var lnkMenuMobile = document.querySelector('.js-open-catalog-mobile');
+    var subCaption = document.querySelector('.js-sub-caption');
+    var btnCloseSubcategory = document.querySelector('.js-close-subcategory-mobile');
+    var fixedHeader = document.querySelector('.js-desktop-fixed');
+    var toggleMenu = function toggleMenu() {
+      menu.classList.toggle('is-open');
+      btnMenu.classList.toggle('is-active');
+    };
+    if (window.innerWidth > 1024) {
+      btnMenu.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMenu();
+        subItem[0].classList.add('is-active');
+        subItem[1].classList.remove('is-active');
+      });
+      lnkMenu.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMenu();
+        subItem[1].classList.add('is-active');
+        subItem[0].classList.remove('is-active');
+      });
+      subItem.forEach(function (el) {
+        el.addEventListener('mouseover', function () {
+          el.classList.remove('is-active');
+        });
+      });
+      subItem.forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          el.classList.remove('is-active');
+        });
+      });
+    } else {
+      btnMenu.addEventListener('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        toggleMenu();
+      });
+      lnkMenuMobile.addEventListener('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        toggleMenu();
+        btnCloseSubcategory.classList.remove('is-hide');
+        btnCloseSubcategory.classList.add('is-back');
+        for (var i = 0; i < subItem.length; i++) {
+          subItem[i].classList.add('from-link');
+        }
+        fixedHeader.classList.add('position-static');
+      });
+      subItem.forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          el.classList.add('is-active');
+          btnCloseSubcategory.classList.remove('is-hide', 'is-back');
+          if (el.classList.contains('from-link')) {
+            btnCloseSubcategory.classList.add('back-main');
+          }
+          var subCaptionAttr = el.dataset.caption;
+          subCaption.innerHTML = subCaptionAttr;
+        });
+      });
+      btnCloseSubcategory.addEventListener('click', function (e) {
+        for (var i = 0; i < subItem.length; i++) {
+          subItem[i].classList.remove('is-active');
+        }
+        if (this.classList.contains('is-back')) {
+          toggleMenu();
+          fixedHeader.classList.remove('position-static');
+        }
+        if (this.matches('.is-hide.back-main')) {
+          toggleMenu();
+          this.classList.remove('back-main');
+          for (var _i = 0; _i < subItem.length; _i++) {
+            subItem[_i].classList.remove('from-link');
+          }
+        }
+        this.classList.add('is-hide');
+        subCaption.innerHTML = 'Каталог';
+      });
+    }
+    btnClose.addEventListener('click', function (e) {
+      e.stopPropagation();
+      toggleMenu();
     });
-  });
-  subItem.forEach(function (el) {
-    el.addEventListener('click', function (e) {
-      e.preventDefault();
-      el.classList.remove('is-active');
-    });
-  });
+  }
 });
 
 // mobile menu
 $(function () {
-  var btnMenu = document.querySelector('.js-open-mobile-menu');
+  var btnMenu = document.querySelectorAll('.js-open-mobile-menu');
   var menu = document.querySelector('.js-mobile-menu');
-  var toggleMenu = function toggleMenu() {
-    menu.classList.add('is-open');
-    btnMenu.classList.add('is-active');
-  };
-  btnMenu.addEventListener('click', function (e) {
-    e.stopPropagation();
-    toggleMenu();
+  btnMenu.forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.stopPropagation();
+      menu.classList.add('is-open');
+    });
   });
   var closeBtn = document.querySelector('.js-close-mobile-menu');
-  var closeMenu = function closeMenu() {
-    menu.classList.remove('is-open');
-    btnMenu.classList.remove('is-active');
-  };
   closeBtn.addEventListener('click', function (e) {
     e.stopPropagation();
-    closeMenu();
+    menu.classList.remove('is-open');
   });
 });
 
@@ -452,8 +508,8 @@ $(function () {
           });
         });
       });
-      for (var _i = 0, _Object$keys = Object.keys(destinations); _i < _Object$keys.length; _i++) {
-        var pls = _Object$keys[_i];
+      for (var _i2 = 0, _Object$keys = Object.keys(destinations); _i2 < _Object$keys.length; _i2++) {
+        var pls = _Object$keys[_i2];
         var myPlacemark = new ymaps.Placemark(destinations[pls], {}, {
           iconLayout: 'default#image',
           iconImageHref: 'assets/img/map-icon.png',
@@ -511,4 +567,27 @@ $('.js-clear-filters').click(function () {
   $('#sales').prop('checked', false);
   $('#filter-price-min').val('');
   $('#filter-price-max').val('');
+});
+
+// fixed header
+$(function () {
+  window.addEventListener('scroll', function () {
+    function stickySidebar() {
+      var scrollDistance = $(document).scrollTop(),
+        headerHeight = $('.header__top').outerHeight(true),
+        $header = $('.js-desktop-fixed'),
+        $headerMobile = $('.header-fixed-mobile');
+      if (scrollDistance >= headerHeight) {
+        $header.addClass('is-fixed');
+        $headerMobile.addClass('is-fixed');
+      } else {
+        $header.removeClass('is-fixed');
+        $headerMobile.removeClass('is-fixed');
+      }
+    }
+    stickySidebar();
+    $(document).scroll(function () {
+      stickySidebar();
+    });
+  });
 });
