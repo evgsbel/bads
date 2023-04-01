@@ -61,31 +61,37 @@ $(function () {
       el: ".swiper-pagination"
     }
   });
-  var swiperProducts = new Swiper(".js-product-list-swiper", {
-    loop: true,
-    freeMode: true,
-    breakpoints: {
-      320: {
-        slidesPerView: 1.5,
-        spaceBetween: 30,
-        grabCursor: true
+  $('.js-product-list-swiper').each(function (index, value) {
+    var swiperProducts = new Swiper(value, {
+      loop: true,
+      freeMode: true,
+      navigation: {
+        nextEl: value.nextElementSibling.nextElementSibling,
+        prevEl: value.nextElementSibling
       },
-      576: {
-        slidesPerView: 2.5,
-        spaceBetween: 30,
-        grabCursor: true
-      },
-      900: {
-        slidesPerView: 3.5,
-        spaceBetween: 30,
-        grabCursor: true
-      },
-      1200: {
-        spaceBetween: 35,
-        slidesPerView: 5,
-        grabCursor: true
+      breakpoints: {
+        320: {
+          slidesPerView: 1.5,
+          spaceBetween: 30,
+          grabCursor: true
+        },
+        576: {
+          slidesPerView: 2.5,
+          spaceBetween: 30,
+          grabCursor: true
+        },
+        900: {
+          slidesPerView: 3.5,
+          spaceBetween: 30,
+          grabCursor: true
+        },
+        1200: {
+          spaceBetween: 35,
+          slidesPerView: 5,
+          grabCursor: true
+        }
       }
-    }
+    });
   });
 });
 _toConsumableArray(document.querySelectorAll('.tabs__content')).map(function (tab) {

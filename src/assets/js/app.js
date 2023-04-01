@@ -55,9 +55,14 @@ $(() => {
     },
   });
 
-  let swiperProducts = new Swiper(".js-product-list-swiper", {
+  $('.js-product-list-swiper').each(function(index, value) {
+  let swiperProducts = new Swiper(value, {
     loop: true,
     freeMode: true,
+    navigation: {
+      nextEl: value.nextElementSibling.nextElementSibling,
+      prevEl: value.nextElementSibling,
+    },
     breakpoints: {
       320: {
         slidesPerView: 1.5,
@@ -80,7 +85,9 @@ $(() => {
         grabCursor: true
       }
     }
+  })
   });
+
 
 });
 

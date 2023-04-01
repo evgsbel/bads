@@ -51,6 +51,7 @@
 }
 .header-fixed-line {
   position: fixed;
+  z-index: 50;
   background-color: #fff;
   width: 100%;
   transition: transform .3s ease-in-out;
@@ -689,7 +690,7 @@
   z-index: -1;
   overflow: hidden;
   transition: opacity .3s ease-in-out;
-  @include r(768) {
+  @include r(1024) {
     background-color: #fff;
     width: 100%;
     padding: 0 15px 30px;
@@ -703,7 +704,7 @@
   }
   &__item {
     max-width: calc(50% - 5px);
-    @include r(768) {
+    @include r(1024) {
       max-width: 100%;
     }
   }
@@ -711,7 +712,7 @@
     position: relative;
     line-height: 1;
     color: #0A1532;
-    @include r(768) {
+    @include r(1024) {
       display: block;
       padding: 10px 0;
       border-bottom: 1px solid #5C93F5;
