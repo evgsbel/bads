@@ -148,6 +148,86 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// catalog menu
+$(() => {
+  const btnMenu = $('.js-open-header-catalog');
+  const menu = $('.js-catalog-menu');
+  const btnClose = $('.js-catalog-menu-closing');
+  const subItem = $('.js-catalog-sub-item')
+  const lnkMenu = $('.js-open-catalog');
+  const body = $('body');
+  const subCaption = $('.js-sub-caption');
+  const btnCloseSubcategory = $('.js-close-subcategory-mobile');
+  const fixedHeader = $('.js-desktop-fixed');
+  const toggleMenu = function () {
+    menu.toggleClass('is-open');
+    btnMenu.toggleClass('is-active');
+    body.toggleClass('opened-menu');
+  };
+
+  function windowSize() {
+    if ($(window).width() >= '1024') {
+      btnMenu.click(function (e) {
+        e.stopPropagation();
+        toggleMenu();
+        subItem.eq(0).addClass('is-active')
+        subItem.eq(1).removeClass('is-active')
+      });
+      lnkMenu.click(function (e) {
+        e.stopPropagation();
+        toggleMenu();
+        subItem.eq(1).addClass('is-active')
+        subItem.eq(0).removeClass('is-active')
+      });
+      subItem.hover(function() {
+        subItem.removeClass('is-active');
+        $(this).addClass('is-active');
+      })
+    } else {
+      btnMenu.click(function (e) {
+        e.stopPropagation();
+        toggleMenu();
+      });
+      lnkMenu.click(function(e) {
+       e.preventDefault();
+        toggleMenu();
+        btnCloseSubcategory.removeClass('is-hide')
+        btnCloseSubcategory.addClass('is-back')
+        subItem.addClass('from-link')
+        fixedHeader.addClass('position-static')
+      });
+      subItem.click(function (e) {
+        e.preventDefault();
+       $(this).addClass('is-active');
+        btnCloseSubcategory.removeClass('is-hide is-back')
+        if ($(this).hasClass('from-link')) {
+          btnCloseSubcategory.addClass('back-main')
+        }
+        const subCaptionAttr = $(this).data('caption')
+        subCaption.html(subCaptionAttr)
+      })
+      btnCloseSubcategory.click(function (e) {
+        $(this).addClass('is-hide')
+        subItem.removeClass('is-active')
+        if ($(this).hasClass('is-back')) {
+          toggleMenu();
+          fixedHeader.removeClass('position-static')
+        }
+        if ($(this).hasClass('back-main')) {
+          btnCloseSubcategory.addClass('is-back')
+          subItem.removeClass('is-active')
+        }
+        subCaption.html('Каталог')
+      })
+      btnClose.click(function (e) {
+        e.stopPropagation();
+        toggleMenu();
+        subItem.removeClass('is-active')
+      })
+    }
+  }
+  $(window).on('load resize', windowSize);
+})
 
 //add to favorite
 $(() => {
@@ -172,118 +252,25 @@ $(() => {
 $('.js-add-to-cart').click(function () {
   $(this).text('В корзине')
 })
-// catalog menu
-$(() => {
-  window.addEventListener('resize', openCatalogMenu);
-  openCatalogMenu.call(window);
 
-  function openCatalogMenu() {
-    const btnMenu = document.querySelector('.js-open-header-catalog');
-    const menu = document.querySelector('.js-catalog-menu');
-    const btnClose = document.querySelector('.js-catalog-menu-closing');
-    const subItem = document.querySelectorAll('.js-catalog-sub-item')
-    const lnkMenu = document.querySelector('.js-open-catalog');
-    const lnkMenuMobile = document.querySelector('.js-open-catalog-mobile');
-    const subCaption = document.querySelector('.js-sub-caption');
-    const btnCloseSubcategory = document.querySelector('.js-close-subcategory-mobile');
-    const fixedHeader = document.querySelector('.js-desktop-fixed');
-    const toggleMenu = function () {
-      menu.classList.toggle('is-open');
-      btnMenu.classList.toggle('is-active');
-    };
-    if (window.innerWidth > 1024) {
-      btnMenu.addEventListener('click', function (e) {
-        e.stopPropagation();
-        toggleMenu();
-        subItem[0].classList.add('is-active')
-        subItem[1].classList.remove('is-active')
-      });
-      lnkMenu.addEventListener('click', function (e) {
-        e.stopPropagation();
-        toggleMenu();
-        subItem[1].classList.add('is-active')
-        subItem[0].classList.remove('is-active')
-      });
-      subItem.forEach(function (el) {
-        el.addEventListener('mouseover', function () {
-          el.classList.remove('is-active');
-        })
-      })
-      subItem.forEach(function (el) {
-        el.addEventListener('click', function (e) {
-          e.preventDefault();
-          el.classList.remove('is-active');
-        })
-      })
-    } else {
-      btnMenu.addEventListener('click', function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        toggleMenu();
-      });
-      lnkMenuMobile.addEventListener('click', function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        toggleMenu();
-        btnCloseSubcategory.classList.remove('is-hide')
-        btnCloseSubcategory.classList.add('is-back')
-        for (let i = 0; i < subItem.length; i++) {
-          subItem[i].classList.add('from-link')
-        }
-        fixedHeader.classList.add('position-static')
-      });
-      subItem.forEach(function (el) {
-        el.addEventListener('click', function (e) {
-          e.preventDefault();
-          el.classList.add('is-active');
-          btnCloseSubcategory.classList.remove('is-hide', 'is-back')
-          if (el.classList.contains('from-link')) {
-            btnCloseSubcategory.classList.add('back-main')
-          }
-          const subCaptionAttr = el.dataset.caption
-          subCaption.innerHTML = subCaptionAttr
-        })
-      })
-      btnCloseSubcategory.addEventListener('click', function (e) {
-        this.classList.add('is-hide')
-        for (let i = 0; i < subItem.length; i++) {
-          subItem[i].classList.remove('is-active')
-        }
-        if (this.classList.contains('is-back')) {
-          toggleMenu();
-          fixedHeader.classList.remove('position-static')
-        }
-        if (this.matches('.is-hide.back-main')) {
-          toggleMenu();
-          this.classList.remove('back-main')
-          for (let i = 0; i < subItem.length; i++) {
-            subItem[i].classList.remove('from-link')
-          }
-        }
-        subCaption.innerHTML = 'Каталог'
-      })
-    }
-    btnClose.addEventListener('click', function (e) {
-      e.stopPropagation();
-      toggleMenu();
-    })
-  }
-});
 
 // mobile menu
 $(() => {
   const btnMenu = document.querySelectorAll('.js-open-mobile-menu');
   const menu = document.querySelector('.js-mobile-menu');
+  const body = document.querySelector('body');
   btnMenu.forEach(function (el) {
     el.addEventListener('click', function (e) {
       e.stopPropagation();
       menu.classList.add('is-open');
+      body.classList.add('opened-menu')
     });
   })
   const closeBtn = document.querySelector('.js-close-mobile-menu');
   closeBtn.addEventListener('click', function (e) {
     e.stopPropagation();
     menu.classList.remove('is-open');
+    body.classList.remove('opened-menu')
   });
 });
 
@@ -379,8 +366,6 @@ $(() => {
   $('.js-cities-container').click(function (event) {
     event.stopPropagation();
   });
-
-
 })
 
 // change text in small device
@@ -609,20 +594,20 @@ $(() => {
 $(() => {
   $(function () {
 
-    $("#smartwizard").on("showStep", function(e, anchorObject, stepIndex, stepDirection, stepPosition) {
-     if (stepIndex === 1) {
-       console.log(stepIndex)
-       $('.js-wizard-caption').text('Способ получения')
-     } else if (stepIndex === 2) {
-       console.log(stepIndex)
-       $('.js-wizard-caption').text('Оплата и подтверждение')
-     } else {
-       console.log(stepIndex)
-       $('.js-wizard-caption').text('Корзина')
-     }
+    $("#smartwizard").on("showStep", function (e, anchorObject, stepIndex) {
+      if (stepIndex === 1) {
+        console.log(stepIndex)
+        $('.js-wizard-caption').text('Способ получения')
+      } else if (stepIndex === 2) {
+        console.log(stepIndex)
+        $('.js-wizard-caption').text('Оплата и подтверждение')
+      } else {
+        $('.js-wizard-caption').text('Корзина')
+      }
     });
     // SmartWizard initialize
     $('#smartwizard').smartWizard({
+      enableUrlHash: false,
       transition: {
         animation: 'fade'
       },
@@ -634,7 +619,8 @@ $(() => {
       lang: { // Language variables for button
         next: 'Next',
         previous: 'Вернуться назад'
-      }
+      },
+
     });
 
   });

@@ -691,16 +691,18 @@
   overflow: hidden;
   transition: opacity .3s ease-in-out;
   @include r(1024) {
+    display: block;
     background-color: #fff;
     width: 100%;
     padding: 0 15px 30px;
     left: 0;
     top: 60px;
     min-height: 100vh;
-    height: auto;
+    height: 100%;
     gap: 0;
     z-index: 0;
     visibility: hidden;
+    overflow-y: auto;
   }
   &__item {
     max-width: calc(50% - 5px);

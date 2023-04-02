@@ -1,5 +1,9 @@
 .cart-navigation {
   margin-bottom: 30px;
+  @include r(576) {
+    visibility: hidden;
+    height: 0;
+  }
   &__item {
     position: relative;
     padding-top: 15px;
@@ -456,4 +460,7 @@
   font-weight: 500;
   font-size: 14px;
   border: none;
+}
+.sw>.tab-content>.tab-pane {
+  padding: 0;
 }

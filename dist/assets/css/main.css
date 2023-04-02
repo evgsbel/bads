@@ -11655,7 +11655,7 @@ main {
 
 body {
   background-color: #fff;
-  color: #4B4C4C;
+  color: #0A1532;
 }
 body.opened-menu {
   overflow: hidden;
@@ -12921,16 +12921,18 @@ h2,
 }
 @media only screen and (max-width: 1024px) {
   .sub-menu {
+    display: block;
     background-color: #fff;
     width: 100%;
     padding: 0 15px 30px;
     left: 0;
     top: 60px;
     min-height: 100vh;
-    height: auto;
+    height: 100%;
     gap: 0;
     z-index: 0;
     visibility: hidden;
+    overflow-y: auto;
   }
 }
 .sub-menu__item {
@@ -14902,6 +14904,12 @@ h2,
 .cart-navigation {
   margin-bottom: 30px;
 }
+@media only screen and (max-width: 576px) {
+  .cart-navigation {
+    visibility: hidden;
+    height: 0;
+  }
+}
 .cart-navigation__item {
   position: relative;
   padding-top: 15px;
@@ -15442,6 +15450,10 @@ h2,
   font-weight: 500;
   font-size: 14px;
   border: none;
+}
+
+.sw > .tab-content > .tab-pane {
+  padding: 0;
 }
 
 .cabinet {
