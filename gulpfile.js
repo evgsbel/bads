@@ -123,7 +123,7 @@ function jsVendor() {
     'node_modules/inputmask/dist/inputmask.min.js',
     'node_modules/simplebar/dist/simplebar.min.js',
     'node_modules/select2/dist/js/select2.min.js',
-    'node_modules/jquery-steps/build/jquery.steps.js'
+    'node_modules/smartwizard/dist/js/jquery.smartWizard.min.js'
   ])
     .pipe(dest('dist/assets/vendor/js'))
     .pipe(browserSync.stream());
@@ -137,7 +137,9 @@ function cssVendor() {
     'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css',
     'node_modules/swiper/swiper.min.css',
     'node_modules/simplebar/dist/simplebar.css',
-    'node_modules/select2/dist/css/select2.min.css'
+    'node_modules/select2/dist/css/select2.min.css',
+    'node_modules/select2/dist/css/select2.min.css',
+    'node_modules/smartwizard/dist/css/smart_wizard_all.min.css'
   ])
     .pipe(dest('dist/assets/vendor/css'))
     .pipe(browserSync.stream());
@@ -320,7 +322,7 @@ function concatScripts() {
     'dist/assets/vendor/js/inputmask.min.js',
     'dist/assets/vendor/js/simplebar.min.js',
     'dist/assets/vendor/js/select2.min.js',
-    'dist/assets/vendor/js/jquery.steps.js',
+    'dist/assets/vendor/js/jquery.smartWizard.min.js',
     'src/assets/js/util/*',
     'src/assets/js/*'
   ])

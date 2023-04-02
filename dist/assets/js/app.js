@@ -236,6 +236,7 @@ $(function () {
         });
       });
       btnCloseSubcategory.addEventListener('click', function (e) {
+        this.classList.add('is-hide');
         for (var i = 0; i < subItem.length; i++) {
           subItem[i].classList.remove('is-active');
         }
@@ -250,7 +251,6 @@ $(function () {
             subItem[_i].classList.remove('from-link');
           }
         }
-        this.classList.add('is-hide');
         subCaption.innerHTML = 'Каталог';
       });
     }
@@ -545,16 +545,37 @@ $(function () {
 });
 
 // cart steps
-$("#wizard").steps({
-  headerTag: "h2",
-  transitionEffect: $.fn.steps.transitionEffect.slideLeft,
-  transitionEffectSpeed: 200,
-  titleTemplate: '#title#',
-  labels: {
-    next: "Далее <svg width='21' height='16' viewBox='0 0 21 16' fill='none' xmlns='http://www.w3.org/2000/svg'>\n" + "  <path d='M1 8H20M20 8L13 1M20 8L13 15' stroke='white' stroke-linecap='round' stroke-linejoin='round'/>\n" + "</svg>",
-    previous: "<svg width='21' height='16' viewBox='0 0 21 16' fill='none' xmlns='http://www.w3.org/2000/svg'>\n" + "  <path d='M20 8H1M1 8L8 1M1 8L8 15' stroke='#2688E5' stroke-linecap='round' stroke-linejoin='round'/>\n" + "</svg> Вернуться",
-    finish: "Оформить"
-  }
+$(function () {
+  $(function () {
+    $("#smartwizard").on("showStep", function (e, anchorObject, stepIndex, stepDirection, stepPosition) {
+      if (stepIndex === 1) {
+        console.log(stepIndex);
+        $('.js-wizard-caption').text('Способ получения');
+      } else if (stepIndex === 2) {
+        console.log(stepIndex);
+        $('.js-wizard-caption').text('Оплата и подтверждение');
+      } else {
+        console.log(stepIndex);
+        $('.js-wizard-caption').text('Корзина');
+      }
+    });
+    // SmartWizard initialize
+    $('#smartwizard').smartWizard({
+      transition: {
+        animation: 'fade'
+      },
+      toolbar: {
+        position: 'top',
+        showNextButton: false,
+        showPreviousButton: false
+      },
+      lang: {
+        // Language variables for button
+        next: 'Next',
+        previous: 'Вернуться назад'
+      }
+    });
+  });
 });
 
 // hide mobile blocks

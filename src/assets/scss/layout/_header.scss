@@ -575,7 +575,7 @@
     transform: translateY(0);
     z-index: 100;
     @include r(1024) {
-      transform: translateY(-65px);
+      transform: translateY(-70px);
       z-index: 110;
     }
   }
