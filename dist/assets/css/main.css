@@ -11657,8 +11657,10 @@ body {
   background-color: #fff;
   color: #0A1532;
 }
-body.opened-menu {
-  overflow: hidden;
+@media only screen and (max-width: 1024px) {
+  body.opened-menu {
+    overflow: hidden;
+  }
 }
 
 /**
