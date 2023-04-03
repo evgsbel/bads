@@ -157,16 +157,7 @@ $(() => {
       subItem.addClass('from-link')
 
     });
-    subItem.click(function (e) {
-      e.preventDefault();
-      $(this).addClass('is-active');
-      btnCloseSubcategory.removeClass('is-hide is-back')
-      if ($(this).hasClass('from-link')) {
-        btnCloseSubcategory.addClass('back-main')
-      }
-      const subCaptionAttr = $(this).data('caption')
-      subCaption.html(subCaptionAttr)
-    })
+
     btnCloseSubcategory.click(function(e) {
       $(this).addClass('is-hide')
       subItem.removeClass('is-active')
@@ -208,11 +199,25 @@ $(() => {
       btnMenu.removeClass('is-active')
       toggleMenu();
     });
-    subItem.hover(function () {
-      subItem.removeClass('is-active');
-      $(this).addClass('is-active');
+    $(window).on('load resize', function() {
+      if ($(window).width() > 1024) {
+        subItem.hover(function () {
+          subItem.removeClass('is-active');
+          $(this).addClass('is-active');
+        })
+      }
     })
 
+    subItem.click(function (e) {
+      e.preventDefault();
+      $(this).addClass('is-active');
+      btnCloseSubcategory.removeClass('is-hide is-back')
+      if ($(this).hasClass('from-link')) {
+        btnCloseSubcategory.addClass('back-main')
+      }
+      const subCaptionAttr = $(this).data('caption')
+      subCaption.html(subCaptionAttr)
+    })
 
 
   }
