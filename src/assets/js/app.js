@@ -163,9 +163,10 @@ $(() => {
 
     //mobile
     btnClose.click(function(e) {
-      //e.stopPropagation();
+      e.stopPropagation();
       subItem.removeClass('is-active')
       btnMenuMobile.removeClass('is-active')
+      btnCloseSubcategory.addClass('is-hide')
       toggleMenu();
     })
     btnMenuMobile.click(function (e) {
@@ -637,7 +638,7 @@ $('.js-clear-filters').click(function () {
 })
 
 // fixed header
-$(document).ready(function {
+$(document).ready(function() {
   window.addEventListener('scroll', function () {
     function stickySidebar() {
       let scrollDistance = $(document).scrollTop(),
