@@ -134,41 +134,8 @@ $(() => {
     body.toggleClass('opened-menu');
   };
   function initMenu() {
+//mobile
 
-    // desktop
-    btnMenu.click(function (e) {
-      e.stopPropagation();
-      subItem.eq(0).addClass('is-active')
-      subItem.eq(1).removeClass('is-active')
-      if (btnMenu.hasClass('is-active')) {
-        subItem.removeClass('is-active')
-      }
-      $(this).toggleClass('is-active')
-      toggleMenu();
-    });
-    lnkMenu.click(function (e) {
-      e.stopPropagation();
-      subItem.eq(1).addClass('is-active')
-      subItem.eq(0).removeClass('is-active')
-      if (btnMenu.hasClass('is-active')) {
-        subItem.removeClass('is-active')
-      }
-      btnMenu.removeClass('is-active')
-      toggleMenu();
-    });
-    subItem.hover(function () {
-      subItem.removeClass('is-active');
-      $(this).addClass('is-active');
-    })
-
-    //mobile
-    btnClose.click(function(e) {
-      e.stopPropagation();
-      subItem.removeClass('is-active')
-      btnMenuMobile.removeClass('is-active')
-      btnCloseSubcategory.addClass('is-hide')
-      toggleMenu();
-    })
     btnMenuMobile.click(function (e) {
       e.stopPropagation();
       btnMenuMobile.toggleClass('is-active')
@@ -213,6 +180,39 @@ $(() => {
       }
       subCaption.html('Каталог')
     })
+    btnClose.click(function(e) {
+      e.stopPropagation();
+      subItem.removeClass('is-active')
+      btnMenuMobile.removeClass('is-active')
+      btnCloseSubcategory.addClass('is-hide')
+      toggleMenu();
+    })
+    // desktop
+    btnMenu.click(function (e) {
+      e.stopPropagation();
+      subItem.eq(0).addClass('is-active')
+      subItem.eq(1).removeClass('is-active')
+      if (btnMenu.hasClass('is-active')) {
+        subItem.removeClass('is-active')
+      }
+      $(this).toggleClass('is-active')
+      toggleMenu();
+    });
+    lnkMenu.click(function (e) {
+      e.stopPropagation();
+      subItem.eq(1).addClass('is-active')
+      subItem.eq(0).removeClass('is-active')
+      if (btnMenu.hasClass('is-active')) {
+        subItem.removeClass('is-active')
+      }
+      btnMenu.removeClass('is-active')
+      toggleMenu();
+    });
+    subItem.hover(function () {
+      subItem.removeClass('is-active');
+      $(this).addClass('is-active');
+    })
+
 
 
   }
