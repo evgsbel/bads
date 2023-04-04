@@ -215,6 +215,9 @@
     -moz-border-radius: 50%;
     border-radius: 50%;
     background-color: #5C93F5;
+    &.swiper-button-disabled {
+      opacity: 0.6;
+    }
     svg {
       fill: #fff;
     }

@@ -109,6 +109,11 @@
   display: flex;
   align-items: center;
   gap: 0 10px;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  &.is-active {
+    opacity: 1;
+  }
   &__btn {
     font-weight: 500;
     font-size: 11px;

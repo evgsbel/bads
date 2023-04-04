@@ -63,7 +63,7 @@ $(function () {
   });
   $('.js-product-list-swiper').each(function (index, value) {
     var swiperProducts = new Swiper(value, {
-      loop: true,
+      loop: false,
       freeMode: true,
       navigation: {
         nextEl: value.nextElementSibling.nextElementSibling,
@@ -233,6 +233,7 @@ $(function () {
 // add to cart text
 $('.js-add-to-cart').click(function () {
   $(this).text('В корзине');
+  $(this).parent().find('.input-count').addClass('is-active');
 });
 
 // mobile menu
