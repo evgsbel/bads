@@ -14590,6 +14590,122 @@ h2,
   height: 100%;
 }
 
+.contacts {
+  margin-bottom: 120px;
+}
+.contacts__wr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 30px;
+}
+@media only screen and (max-width: 768px) {
+  .contacts__wr {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 20px 0;
+  }
+}
+.contacts__caption {
+  margin-bottom: 5px;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #0A1532;
+}
+.contacts__item {
+  display: block;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #0A1532;
+}
+.contacts__img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.points {
+  margin-bottom: 120px;
+}
+
+.points-list {
+  margin-bottom: 80px;
+}
+.points-list__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 15px 0;
+  background-color: #F9F9F9;
+}
+.points-list__link {
+  line-height: 1.3;
+  color: #0A1532;
+}
+
+.faq__form {
+  padding: 25px 30px;
+  border: 1px solid #EEEEEE;
+  border-radius: 10px;
+}
+@media only screen and (max-width: 768px) {
+  .faq__form {
+    margin-top: 50px;
+  }
+}
+.faq__caption {
+  margin-bottom: 25px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.3;
+  text-align: center;
+  color: #0A1532;
+}
+.faq__subcaption {
+  margin-bottom: 20px;
+  line-height: 1.3;
+  text-align: center;
+  color: #636363;
+}
+.faq__label {
+  font-size: 14px;
+}
+.faq__input {
+  font-size: 13px;
+}
+.faq__input::-webkit-input-placeholder {
+  font-size: 13px;
+}
+.faq__input::-moz-placeholder {
+  font-size: 13px;
+}
+.faq__input:-ms-input-placeholder {
+  font-size: 13px;
+}
+.faq__input::-ms-input-placeholder {
+  font-size: 13px;
+}
+.faq__input::placeholder {
+  font-size: 13px;
+}
+.faq__submit {
+  font-weight: 600;
+  font-size: 16px;
+}
+
 .catalog {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -15184,7 +15300,7 @@ h2,
   padding: 25px;
   border: 1px solid #E1ECFF;
   border-radius: 15px;
-  max-height: 610px;
+  max-height: 470px;
 }
 @media only screen and (max-width: 1024px) {
   .cart-address {
